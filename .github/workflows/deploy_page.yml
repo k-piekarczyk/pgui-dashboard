@@ -1,0 +1,22 @@
+name: Build page
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    lint_and_test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - uses: actions/setup-node@v2-beta
+              with:
+                  node-version: 16
+
+            - run: npm install
+            - run: npm run build
+            - run: npm run deploy
