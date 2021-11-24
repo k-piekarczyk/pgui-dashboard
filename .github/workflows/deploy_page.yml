@@ -1,4 +1,4 @@
-name: Build page
+name: Build and deploy page
 
 on:
     push:
@@ -7,7 +7,7 @@ on:
         branches: [main]
 
 jobs:
-    lint_and_test:
+    build_and_deploy:
         runs-on: ubuntu-latest
 
         steps:
