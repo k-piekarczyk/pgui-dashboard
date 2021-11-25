@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.js": "/pgui-platform-demo/static/js/main.bcae285e.chunk.js",
-    "main.js.map": "/pgui-platform-demo/static/js/main.bcae285e.chunk.js.map",
-    "runtime-main.js": "/pgui-platform-demo/static/js/runtime-main.81763825.js",
-    "runtime-main.js.map": "/pgui-platform-demo/static/js/runtime-main.81763825.js.map",
-    "static/js/2.b90b6814.chunk.js": "/pgui-platform-demo/static/js/2.b90b6814.chunk.js",
-    "static/js/2.b90b6814.chunk.js.map": "/pgui-platform-demo/static/js/2.b90b6814.chunk.js.map",
-    "index.html": "/pgui-platform-demo/index.html",
-    "static/js/2.b90b6814.chunk.js.LICENSE.txt": "/pgui-platform-demo/static/js/2.b90b6814.chunk.js.LICENSE.txt"
+    "main.js": "/static/js/main.bcae285e.chunk.js",
+    "main.js.map": "/static/js/main.bcae285e.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2338f6e8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2338f6e8.js.map",
+    "static/js/2.b90b6814.chunk.js": "/static/js/2.b90b6814.chunk.js",
+    "static/js/2.b90b6814.chunk.js.map": "/static/js/2.b90b6814.chunk.js.map",
+    "index.html": "/index.html",
+    "static/js/2.b90b6814.chunk.js.LICENSE.txt": "/static/js/2.b90b6814.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.81763825.js",
+    "static/js/runtime-main.2338f6e8.js",
     "static/js/2.b90b6814.chunk.js",
     "static/js/main.bcae285e.chunk.js"
   ]
