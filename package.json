@@ -43,5 +43,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://pgui.soggysock.pl"
+  "homepage": "https://pgui.soggysock.pl",
+  "volta": {
+    "node": "16.13.1"
+  }
 }
