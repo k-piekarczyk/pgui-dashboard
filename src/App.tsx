@@ -22,9 +22,9 @@ export default function App() {
     [],
   );
 
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
-  const [_, setLang] = React.useState<"en" | "pl">("en");
+  const [, setLang] = React.useState<"en" | "pl">("en");
   const langMode = React.useMemo(
     () => ({
       toggleLanguage: () => {
@@ -37,7 +37,7 @@ export default function App() {
         });
       },
     }),
-    [],
+    [i18n],
   );
 
   const theme = React.useMemo(() => createTheme(getPalette(mode) as any), [mode]);
