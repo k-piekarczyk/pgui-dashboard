@@ -27,9 +27,9 @@ export default function Login() {
           },
         }}
       >
-        <LargeSplash imagePath={mikolajImage} borderColor={"#006AD4"} />
-        <LargeSplash imagePath={lukaszImage} borderColor={"#00D971"}/>
-        <LargeSplash imagePath={krzysiekImage} borderColor={"#FAFF00"}/>
+        <LargeSplash borderColor={"#006AD4"} user={{ name: "Mikołaj", imagePath: mikolajImage }} />
+        <LargeSplash borderColor={"#00D971"} user={{ name: "Łukasz", imagePath: lukaszImage }} />
+        <LargeSplash borderColor={"#FAFF00"} user={{ name: "Krzysiek", imagePath: krzysiekImage }} />
         <LargeSplash />
       </Box>
     </PageContainer>

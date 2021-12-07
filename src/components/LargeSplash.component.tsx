@@ -3,8 +3,11 @@ import React, { FunctionComponent } from "react";
 import { useNavigate } from "react-router";
 
 interface LargeSplashProps {
-  imagePath?: string;
   borderColor?: string;
+  user?: {
+    name: string;
+    imagePath: string;
+  };
 }
 
 const LargeSplash: FunctionComponent<LargeSplashProps> = (props) => {
@@ -21,14 +24,22 @@ const LargeSplash: FunctionComponent<LargeSplashProps> = (props) => {
         height: "260px",
         borderRadius: "50%",
         cursor: "pointer",
-        backgroundImage: props.imagePath ? `url(${props.imagePath})` : undefined,
-        backgroundSize: props.imagePath ? "cover" : undefined,
-        backgroundRepeat: props.imagePath ? "no-repeat" : undefined,
-        backgroundPosition: props.imagePath ? "center" : undefined,
+        backgroundImage: props.user ? `url(${props.user!.imagePath})` : undefined,
+        backgroundSize: props.user ? "cover" : undefined,
+        backgroundRepeat: props.user ? "no-repeat" : undefined,
+        backgroundPosition: props.user ? "center" : undefined,
       }}
     >
-      {props.imagePath ? (
-        <div style={{width: "100%", height: "100%"}} onClick={() => {navigate("/dashboard")}} />
+      {props.user ? (
+        <div
+          style={{ width: "100%", height: "100%" }}
+          onClick={() => {
+            localStorage.setItem("user", props.user!.name);
+            localStorage.setItem("userImage", props.user!.imagePath);
+            localStorage.setItem("userColor", props.borderColor ?? "");
+            navigate("/dashboard");
+          }}
+        />
       ) : (
         <>
           <Box

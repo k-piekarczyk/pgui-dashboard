@@ -9,7 +9,11 @@ export default function Dashboard() {
   const { t } = useTranslation();
 
   return (
-    <PageContainer header={t("Good evening, Mikołaj!")} previousPage={{ route: "/", name: t("Account selection") }}>
+    <PageContainer
+      header={t("Good evening") + `, ${localStorage.getItem("user")}!`}
+      previousPage={{ route: "/", name: t("Account selection") }}
+      loggedIn={true}
+    >
       <Box
         sx={{
           display: "flex",

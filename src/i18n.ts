@@ -15,7 +15,8 @@ const resources = {
       "Language": "Język",
       "Polish": "Polski",
       "English": "Angielski",
-      "Good evening, Mikołaj!": "Dobry wieczór, Mikołaj!"
+      "Return to": "Powrót do",
+      "Good evening,": "Dobry wieczór,"
     }
   }
 };

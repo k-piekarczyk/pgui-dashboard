@@ -9,9 +9,11 @@ import LanguageContext from "../context/language.context";
 
 import "./PageContainer.component.scss";
 import { useNavigate } from "react-router";
+import UserIcon from "./UserIcon.component";
 
 interface PageContainerProps {
   header: string;
+  loggedIn?: boolean;
   previousPage?: {
     name: string;
     route: string;
@@ -46,6 +48,7 @@ const PageContainer: FunctionComponent<PageContainerProps> = (props) => {
           paddingBottom: 1,
           paddingLeft: 2,
           paddingRight: 2,
+          height: "75px",
         }}
       >
         {props.previousPage ? (
@@ -70,6 +73,8 @@ const PageContainer: FunctionComponent<PageContainerProps> = (props) => {
             {theme.palette.mode === "dark" ? t("Dark") : t("Light")}
           </Button>
         </Box>
+
+        {props.loggedIn ? <UserIcon /> : undefined}
       </Box>
 
       <Box
@@ -77,15 +82,15 @@ const PageContainer: FunctionComponent<PageContainerProps> = (props) => {
           display: "flex",
           justifyContent: "left",
           alignItems: "center",
-          paddingTop: 1,
+          paddingTop: 2,
           paddingBottom: 1,
-          paddingLeft: 2,
-          paddingRight: 2,
+          paddingLeft: 7,
+          paddingRight: 7,
         }}
       >
-        <Box>
+        <div className="PageContainer__header">
           <h1>{props.header}</h1>
-        </Box>
+        </div>
         <Box sx={{ marginLeft: "auto", fontSize: "2em" }}>
           <Box component="span" sx={{ marginRight: 1, fontWeight: 600 }}>
             {currentTime.toFormat("hh:mm", { locale: i18n.language })}
