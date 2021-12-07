@@ -7,6 +7,9 @@ import ColorModeContext from "../context/colorMode.context";
 import { useTranslation } from "react-i18next";
 import LanguageContext from "../context/language.context";
 
+import "./PageContainer.component.scss";
+import { useNavigate } from "react-router";
+
 interface PageContainerProps {
   header: string;
   previousPage?: {
@@ -26,57 +29,72 @@ const PageContainer: FunctionComponent<PageContainerProps> = (props) => {
 
   const { t, i18n } = useTranslation();
 
+  const navigate = useNavigate();
+
+  const goBack = () => () => {
+    navigate(props.previousPage!.route);
+  };
+
   return (
     <>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "right",
-            alignItems: "center",
-            paddingTop: 1,
-            paddingBottom: 1,
-            paddingLeft: 2,
-            paddingRight: 2,
-          }}
-        >
-          <Box sx={{ marginRight: 3 }}>
-            {t("Language")}:
-            <Button sx={{ marginLeft: 1 }} size="small" variant="outlined" onClick={langMode.toggleLanguage}>
-              {i18n.language === "en" ? t("English") : t("Polish")}
-            </Button>
-          </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "left",
+          alignItems: "center",
+          paddingTop: 1,
+          paddingBottom: 1,
+          paddingLeft: 2,
+          paddingRight: 2,
+        }}
+      >
+        {props.previousPage ? (
+          <div className="PageContainer__back_container" onClick={goBack()}>
+            <div className="PageContainer__arrow" />
+            <div className="PageContainer__text">
+              {t("Return to")}: {props.previousPage!.name}
+            </div>
+          </div>
+        ) : undefined}
 
-          <Box>
-            {t("Theme")}:
-            <Button sx={{ marginLeft: 1 }} size="small" variant="outlined" onClick={colorMode.toggleColorMode}>
-              {theme.palette.mode === "dark" ? t("Dark") : t("Light")}
-            </Button>
-          </Box>
+        <Box sx={{ marginRight: 3, marginLeft: "auto" }}>
+          {t("Language")}:
+          <Button sx={{ marginLeft: 1 }} size="small" variant="outlined" onClick={langMode.toggleLanguage}>
+            {i18n.language === "en" ? t("English") : t("Polish")}
+          </Button>
         </Box>
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "left",
-            alignItems: "center",
-            paddingTop: 1,
-            paddingBottom: 1,
-            paddingLeft: 2,
-            paddingRight: 2,
-          }}
-        >
-          <Box>
-            <h1>{props.header}</h1>
+        <Box>
+          {t("Theme")}:
+          <Button sx={{ marginLeft: 1 }} size="small" variant="outlined" onClick={colorMode.toggleColorMode}>
+            {theme.palette.mode === "dark" ? t("Dark") : t("Light")}
+          </Button>
+        </Box>
+      </Box>
+
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "left",
+          alignItems: "center",
+          paddingTop: 1,
+          paddingBottom: 1,
+          paddingLeft: 2,
+          paddingRight: 2,
+        }}
+      >
+        <Box>
+          <h1>{props.header}</h1>
+        </Box>
+        <Box sx={{ marginLeft: "auto", fontSize: "2em" }}>
+          <Box component="span" sx={{ marginRight: 1, fontWeight: 600 }}>
+            {currentTime.toFormat("hh:mm", { locale: i18n.language })}
           </Box>
-          <Box sx={{ marginLeft: "auto", fontSize: "2em" }}>
-            <Box component="span" sx={{ marginRight: 1, fontWeight: 600 }}>
-              {currentTime.toFormat("hh:mm", { locale: i18n.language })}
-            </Box>
-            <Box component="span" sx={{ fontWeight: 300 }}>
-              {currentTime.toFormat("dd LLLL yyyy", { locale: i18n.language })}
-            </Box>
+          <Box component="span" sx={{ fontWeight: 300 }}>
+            {currentTime.toFormat("dd LLLL yyyy", { locale: i18n.language })}
           </Box>
         </Box>
+      </Box>
       <Box>{props.children ?? "Nothing here"}</Box>
     </>
   );

@@ -1,0 +1,32 @@
+@import "../mixins";
+
+.PageContainer__arrow {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  clip-path: polygon(50% 15%, 0% 100%, 100% 100%);
+  box-sizing: border-box;
+  transform: rotate(-90deg);
+  border: 3px solid;
+  border-radius: 6px;
+  margin-top: 7px;
+}
+
+.PageContainer__arrow {
+  @include theme-aware("background", "color-tile-border");
+}
+
+.PageContainer__text {
+  margin-left: 10px;
+  font-size: 30px;
+  @include theme-aware("color", "color-text");
+}
+
+.PageContainer__back_container {
+  display: flex;
+  align-items: center;
+
+  & > div {
+    cursor: pointer;
+  }
+}

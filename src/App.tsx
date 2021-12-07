@@ -8,6 +8,7 @@ import ColorModeContext from "./context/colorMode.context";
 import getPalette, { colorPalette as cp } from "./palette";
 
 import LoginPage from "./pages/Login.page";
+import DashboardPage from "./pages/Dashboard.page";
 import LanguageContext from "./context/language.context";
 import { useTranslation } from "react-i18next";
 
@@ -16,7 +17,14 @@ export default function App() {
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+        setMode((prevMode) => {
+          const newMode = prevMode === "light" ? "dark" : "light";
+
+          document.documentElement.className = "";
+          document.documentElement.classList.add(`theme-${newMode}`);
+
+          return newMode;
+        });
       },
     }),
     [],
@@ -49,6 +57,7 @@ export default function App() {
           <Box sx={{ width: "100%", minHeight: "100vh", bgcolor: cp.background, color: cp.text.primary }}>
             <Routes>
               <Route path="/" element={<LoginPage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
             </Routes>
           </Box>
         </ThemeProvider>

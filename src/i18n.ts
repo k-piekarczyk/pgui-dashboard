@@ -14,7 +14,8 @@ const resources = {
       "Light": "Jasny",
       "Language": "Język",
       "Polish": "Polski",
-      "English": "Angielski"
+      "English": "Angielski",
+      "Good evening, Mikołaj!": "Dobry wieczór, Mikołaj!"
     }
   }
 };

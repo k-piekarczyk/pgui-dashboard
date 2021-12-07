@@ -1,0 +1,13 @@
+@import "../mixins";
+
+.Tile {
+    box-sizing: border-box;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 20px;
+}
+
+.Tile {
+    @include theme-aware("background", "color-tile-background");
+    @include theme-aware("border-color", "color-tile-border");
+}
