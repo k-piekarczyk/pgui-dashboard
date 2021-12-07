@@ -1,10 +1,18 @@
 @import "../mixins";
 
 .Tile {
+    position: relative;
     box-sizing: border-box;
     border-width: 2px;
     border-style: solid;
     border-radius: 20px;
+
+    & > .Tile__header {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 36px;
+    }
 }
 
 .Tile {

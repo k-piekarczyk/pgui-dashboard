@@ -9,16 +9,22 @@ const resources = {
   pl: {
     translation: {
       "Account selection": "Wybór konta",
-      "Theme": "Motyw",
-      "Dark": "Ciemny",
-      "Light": "Jasny",
-      "Language": "Język",
-      "Polish": "Polski",
-      "English": "Angielski",
+      Theme: "Motyw",
+      Dark: "Ciemny",
+      Light: "Jasny",
+      Language: "Język",
+      Polish: "Polski",
+      English: "Angielski",
       "Return to": "Powrót do",
-      "Good evening,": "Dobry wieczór,"
-    }
-  }
+      "Good evening": "Dobry wieczór",
+      Orders: "Zamówienia",
+      "Quality of sales": "Jakość sprzedaży",
+      "Customer feedback": "Opinie kupujących",
+      "Offer ranking": "Ranking offer",
+      "Sales chart": "Wykres sprzedaży",
+      "Sales advice": "Porady sprzedażowe",
+    },
+  },
 };
 
 i18n
@@ -31,8 +37,8 @@ i18n
     // if you're using a language detector, do not define the lng option
 
     interpolation: {
-      escapeValue: false // react already safes from xss
-    }
+      escapeValue: false, // react already safes from xss
+    },
   });
 
-  export default i18n;
+export default i18n;

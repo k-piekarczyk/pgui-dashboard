@@ -31,12 +31,12 @@ export default function Dashboard() {
           },
         }}
       >
-        <Tile width="600px" height="300px"></Tile>
-        <Tile width="600px" height="300px"></Tile>
-        <Tile width="600px" height="300px"></Tile>
-        <Tile width="600px" height="300px"></Tile>
-        <Tile width="600px" height="300px"></Tile>
-        <Tile width="600px" height="300px"></Tile>
+        <Tile width="600px" height="300px" header={t("Orders")}></Tile>
+        <Tile width="600px" height="300px" header={t("Quality of sales")}></Tile>
+        <Tile width="600px" height="300px" header={t("Customer feedback")}></Tile>
+        <Tile width="600px" height="300px" header={t("Offer ranking")}></Tile>
+        <Tile width="600px" height="300px" header={t("Sales chart")}></Tile>
+        <Tile width="600px" height="300px" header={t("Sales advice")}></Tile>
       </Box>
     </PageContainer>
   );
