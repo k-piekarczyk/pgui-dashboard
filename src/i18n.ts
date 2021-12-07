@@ -23,6 +23,11 @@ const resources = {
       "Offer ranking": "Ranking offer",
       "Sales chart": "Wykres sprzedaży",
       "Sales advice": "Porady sprzedażowe",
+      "Not paid": "Nieopłacone",
+      "Not sent": "Niewysłane",
+      Returns: "Zwroty",
+      "Currently processed orders": "Obecnie realizowane zamówienia",
+      "Order history": "Historia zamówień",
     },
   },
 };

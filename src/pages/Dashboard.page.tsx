@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import PageContainer from "../components/PageContainer.component";
 import Tile from "../components/Tile.component";
@@ -31,7 +31,49 @@ export default function Dashboard() {
           },
         }}
       >
-        <Tile width="600px" height="300px" header={t("Orders")}></Tile>
+        <Tile width="600px" height="300px" header={t("Orders")}>
+          <Box
+            sx={{
+              display: "flex",
+              position: "relative",
+              top: "20px",
+              "& > * ": {
+                flexBasis: "49%",
+              },
+              paddingLeft: "20px",
+              paddingRight: "20px",
+              paddingTop: "20px",
+            }}
+          >
+            <Box>
+              <Box sx={{ display: "flex" }}>
+                <Box sx={{ fontSize: "30px" }}>{t("Not paid")}</Box>{" "}
+                <Box sx={{ marginLeft: "auto", fontSize: "30px", fontWeight: 700 }}>44</Box>
+              </Box>
+              <Box sx={{ display: "flex" }}>
+                <Box sx={{ fontSize: "30px" }}>{t("Not sent")}</Box>{" "}
+                <Box sx={{ marginLeft: "auto", fontSize: "30px", fontWeight: 700 }}>18</Box>
+              </Box>
+              <Box sx={{ display: "flex" }}>
+                <Box sx={{ fontSize: "30px" }}>{t("Returns")}</Box>{" "}
+                <Box sx={{ marginLeft: "auto", fontSize: "30px", fontWeight: 700 }}>9</Box>
+              </Box>
+              <Box sx={{ display: "flex", justifyContent: "center", paddingTop: "25px" }}>
+                <Button size="small" variant="contained">
+                  {t("Order history")}
+                </Button>
+              </Box>
+            </Box>
+            <Box>
+              <Box sx={{ fontWeight: "bold", fontSize: "144px", position: "relative", top: "-50px", left: "70px" }}>
+                71
+              </Box>
+              <Box sx={{ fontSize: "22px", position: "relative", top: "-60px", left: "25px", textAlign: "center" }}>
+                {t("Currently processed orders")}
+              </Box>
+            </Box>
+          </Box>
+        </Tile>
         <Tile width="600px" height="300px" header={t("Quality of sales")}></Tile>
         <Tile width="600px" height="300px" header={t("Customer feedback")}></Tile>
         <Tile width="600px" height="300px" header={t("Offer ranking")}></Tile>
