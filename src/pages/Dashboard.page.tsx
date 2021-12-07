@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Rating } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import PageContainer from "../components/PageContainer.component";
 import Tile from "../components/Tile.component";
@@ -74,7 +74,24 @@ export default function Dashboard() {
             </Box>
           </Box>
         </Tile>
-        <Tile width="600px" height="300px" header={t("Quality of sales")}></Tile>
+
+        <Tile width="600px" height="300px" header={t("Quality of sales")}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "30px",
+              flexDirection: "column",
+            }}
+          >
+            <Rating name="read-only" value={4.1} size="large" readOnly sx={{ fontSize: "70px", marginBottom: "15px" }} />
+            <Box sx={{ fontSize: "30px", textAlign: "center", marginBottom: "25px" }}>{`${t("90 day average")}: 4.1/5`}</Box>
+            <Button size="small" variant="contained">
+              {t("Check your category: Specialist")}
+            </Button>
+          </Box>
+        </Tile>
         <Tile width="600px" height="300px" header={t("Customer feedback")}></Tile>
         <Tile width="600px" height="300px" header={t("Offer ranking")}></Tile>
         <Tile width="600px" height="300px" header={t("Sales chart")}></Tile>

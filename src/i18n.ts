@@ -28,6 +28,8 @@ const resources = {
       Returns: "Zwroty",
       "Currently processed orders": "Obecnie realizowane zamówienia",
       "Order history": "Historia zamówień",
+      "90 day average": "Średnia z ostatnich 90 dni",
+      "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz"
     },
   },
 };
