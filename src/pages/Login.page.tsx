@@ -22,7 +22,7 @@ export default function Login() {
           width: "100vw",
           justifyContent: "center",
           alignItems: "center",
-          "& > *:not(:first-child)": {
+          "& > *:not(:first-of-type)": {
             marginLeft: "82px",
           },
         }}

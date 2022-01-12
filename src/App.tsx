@@ -14,6 +14,7 @@ import { useTranslation } from "react-i18next";
 
 export default function App() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
+
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {

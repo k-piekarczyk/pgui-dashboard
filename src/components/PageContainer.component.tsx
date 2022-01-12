@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useState, useEffect } from "react";
 import { Box, Button, useTheme } from "@mui/material";
 
 import { DateTime } from "luxon";
@@ -27,7 +27,13 @@ const PageContainer: FunctionComponent<PageContainerProps> = (props) => {
 
   const [currentTime, setCurrentTime] = useState(DateTime.now());
 
-  setInterval(() => setCurrentTime(DateTime.now()), 1000);
+  useEffect(() => {
+    const clockInterval = setInterval(() => setCurrentTime(DateTime.now()), 1000);
+
+    return function cleanup() {
+      clearInterval(clockInterval)
+    }
+  }, []);
 
   const { t, i18n } = useTranslation();
 
