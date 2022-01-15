@@ -1,0 +1,11 @@
+@import "./mixins";
+
+.App {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.App {
+    @include theme-aware("background", "color-background");
+    @include theme-aware("color", "color-text");
+}
