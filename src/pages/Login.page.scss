@@ -1,0 +1,13 @@
+.LoginPage {
+    position: absolute;
+    display: flex;
+    top: 50vh;
+    transform: translateY(-50%);
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    
+    & > *:not(:first-child) {
+        margin-left: 82px;
+    }
+}
