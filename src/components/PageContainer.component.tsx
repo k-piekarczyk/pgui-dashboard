@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
-import { Box, Button, useTheme } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 
 import { DateTime } from "luxon";
 
@@ -31,8 +31,8 @@ const PageContainer: FunctionComponent<PageContainerProps> = (props) => {
     const clockInterval = setInterval(() => setCurrentTime(DateTime.now()), 1000);
 
     return function cleanup() {
-      clearInterval(clockInterval)
-    }
+      clearInterval(clockInterval);
+    };
   }, []);
 
   const { t, i18n } = useTranslation();
@@ -44,70 +44,49 @@ const PageContainer: FunctionComponent<PageContainerProps> = (props) => {
   };
 
   return (
-    <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "left",
-          alignItems: "center",
-          paddingTop: 1,
-          paddingBottom: 1,
-          paddingLeft: 2,
-          paddingRight: 2,
-          height: "75px",
-        }}
-      >
+    <div className="PageContainer">
+      <div className="PageContainer__Controls">
         {props.previousPage ? (
-          <div className="PageContainer__back_container" onClick={goBack()}>
-            <div className="PageContainer__arrow" />
-            <div className="PageContainer__text">
+          <div className="PageContainer__Controls__Nav" onClick={goBack()}>
+            <div className="PageContainer__Controls__Nav-arrow" />
+            <div className="PageContainer__Controls__Nav-text">
               {t("Return to")}: {props.previousPage!.name}
             </div>
           </div>
         ) : undefined}
 
-        <Box sx={{ marginRight: 3, marginLeft: "auto" }}>
+        <div className="PageContainer__Controls__Lang">
           {t("Language")}:
-          <Button sx={{ marginLeft: 1 }} size="small" variant="outlined" onClick={langMode.toggleLanguage}>
+          <Button size="small" variant="outlined" onClick={langMode.toggleLanguage}>
             {i18n.language === "en" ? t("English") : t("Polish")}
           </Button>
-        </Box>
+        </div>
 
-        <Box>
+        <div className="PageContainer__Controls__Theme">
           {t("Theme")}:
-          <Button sx={{ marginLeft: 1 }} size="small" variant="outlined" onClick={colorMode.toggleColorMode}>
+          <Button size="small" variant="outlined" onClick={colorMode.toggleColorMode}>
             {theme.palette.mode === "dark" ? t("Dark") : t("Light")}
           </Button>
-        </Box>
+        </div>
 
         {props.loggedIn ? <UserIcon /> : undefined}
-      </Box>
+      </div>
 
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "left",
-          alignItems: "center",
-          paddingTop: 2,
-          paddingBottom: 1,
-          paddingLeft: 7,
-          paddingRight: 7,
-        }}
-      >
-        <div className="PageContainer__header">
-          <h1>{props.header}</h1>
-        </div>
-        <Box sx={{ marginLeft: "auto", fontSize: "2em" }}>
-          <Box component="span" sx={{ marginRight: 1, fontWeight: 600 }}>
+      <div className="PageContainer__Header">
+        <h1 className="PageContainer__Header-text">{props.header}</h1>
+
+        <div className="PageContainer__Header__Clock">
+          <span className="PageContainer__Header__Clock-time">
             {currentTime.toFormat("hh:mm", { locale: i18n.language })}
-          </Box>
-          <Box component="span" sx={{ fontWeight: 300 }}>
+          </span>
+          <span className="PageContainer__Header__Clock-date">
             {currentTime.toFormat("dd LLLL yyyy", { locale: i18n.language })}
-          </Box>
-        </Box>
-      </Box>
-      <Box>{props.children ?? "Nothing here"}</Box>
-    </>
+          </span>
+        </div>
+      </div>
+
+      <div className="PageContainer__Children">{props.children ?? "Nothing here"}</div>
+    </div>
   );
 };
 
