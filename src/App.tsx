@@ -1,16 +1,17 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 
-import { Box } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import ColorModeContext from "./context/colorMode.context";
-import getPalette, { colorPalette as cp } from "./palette";
+import getPalette from "./palette";
 
 import LoginPage from "./pages/Login.page";
 import DashboardPage from "./pages/Dashboard.page";
 import LanguageContext from "./context/language.context";
 import { useTranslation } from "react-i18next";
+
+import "./App.scss"
 
 export default function App() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
@@ -55,12 +56,12 @@ export default function App() {
     <LanguageContext.Provider value={langMode}>
       <ColorModeContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
-          <Box sx={{ width: "100%", minHeight: "100vh", bgcolor: cp.background, color: cp.text.primary }}>
+          <div className="App">
             <Routes>
               <Route path="/" element={<LoginPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
             </Routes>
-          </Box>
+          </div>
         </ThemeProvider>
       </ColorModeContext.Provider>
     </LanguageContext.Provider>
