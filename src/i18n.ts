@@ -9,6 +9,7 @@ const resources = {
   pl: {
     translation: {
       "Account selection": "Wybór konta",
+      Dashboard: "Strona główna",
       Theme: "Motyw",
       Dark: "Ciemny",
       Light: "Jasny",
@@ -29,7 +30,8 @@ const resources = {
       "Currently processed orders": "Obecnie realizowane zamówienia",
       "Order history": "Historia zamówień",
       "90 day average": "Średnia z ostatnich 90 dni",
-      "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz"
+      "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz",
+      Category: "Kategoria"
     },
   },
 };

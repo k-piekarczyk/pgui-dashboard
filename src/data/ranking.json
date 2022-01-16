@@ -1,0 +1,35 @@
+{
+    "currency": "PLN",
+    "items": [
+      {
+        "picture": "zotac.jpg",
+        "name": "Zotac GeForce RTX 3060 Ti AMP White 8GB GDDR6",
+        "sold": 1264,
+        "turnover": 6067200.00
+      },
+      {
+        "picture": "intel.jpg",
+        "name": "Intel Core i5-12600K",
+        "sold": 894,
+        "turnover": 1286466.00
+      },
+      {
+        "picture": "amd.jpg",
+        "name": "AMD Ryzen 5600X",
+        "sold": 716,
+        "turnover": 1023164.00
+      },
+      {
+        "picture": "Oculus.jpg",
+        "name": "Oculus Quest 2 - 256GB",
+        "sold": 615,
+        "turnover": 1530735.00
+      },
+      {
+        "picture": "gskill.jpg",
+        "name": "G.SKILL 16GB (2X16GB) 4266Mhz CL19 Trident Z RGB",
+        "sold": 511,
+        "turnover": 469609.00
+      }
+    ]
+  }
