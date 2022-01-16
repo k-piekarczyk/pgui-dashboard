@@ -1,0 +1,8 @@
+.PageContainer__Children {
+  padding: 18px 56px;
+  display: flex;
+
+  & > div {
+    min-width: 200px;
+  }
+}
