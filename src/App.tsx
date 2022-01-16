@@ -61,7 +61,6 @@ export default function App() {
             <Routes>
               <Route path="/" element={<LoginPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
-              <Route path="/ranking" element={<RankingPage />} />
             </Routes>
           </div>
         </ThemeProvider>
