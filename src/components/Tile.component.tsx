@@ -3,8 +3,8 @@ import { FunctionComponent } from "react";
 import "./Tile.component.scss";
 
 interface TileProps {
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
   header?: string;
 }
 

@@ -15,7 +15,7 @@ export default function Dashboard() {
       loggedIn={true}
     >
       <div className="Dashboard">
-        <Tile width="600px" height="300px">
+        <Tile header={t("Orders")}>
           <div className="Dashboard__Orders">
             <div>
               <div className="Dashboard__Orders__Stats">
@@ -36,6 +36,7 @@ export default function Dashboard() {
                 </Button>
               </div>
             </div>
+            <div className="Dashboard__Orders__Spacer" />
             <div className="Dashboard__Orders__Current">
               <div className="Dashboard__Orders__Current-number">71</div>
               <div className="Dashboard__Orders__Current-text">{t("Currently processed orders")}</div>
@@ -43,14 +44,15 @@ export default function Dashboard() {
           </div>
         </Tile>
 
-        <Tile width="600px" height="300px" header={t("Quality of sales")}>
+        <Tile header={t("Quality of sales")}>
           <div className="Dashboard__QoS">
             <Rating
+              className="Dashboard__QoS__Rating"
               name="read-only"
               value={4.1}
               size="large"
               readOnly
-              sx={{ fontSize: "70px", marginBottom: "15px" }}
+              sx={{ marginBottom: "15px" }}
             />
             <div className="Dashboard__QoS__Sub">
               {`${t("90 day average")}: 4.1/5`}
@@ -60,10 +62,10 @@ export default function Dashboard() {
             </Button>
           </div>
         </Tile>
-        <Tile width="600px" height="300px" header={t("Customer feedback")}></Tile>
-        <Tile width="600px" height="300px" header={t("Offer ranking")}></Tile>
-        <Tile width="600px" height="300px" header={t("Sales chart")}></Tile>
-        <Tile width="600px" height="300px" header={t("Sales advice")}></Tile>
+        <Tile header={t("Customer feedback")}></Tile>
+        <Tile header={t("Offer ranking")}></Tile>
+        <Tile header={t("Sales chart")}></Tile>
+        <Tile header={t("Sales advice")}></Tile>
       </div>
     </PageContainer>
   );
