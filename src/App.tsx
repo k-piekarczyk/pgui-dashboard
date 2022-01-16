@@ -12,6 +12,7 @@ import LanguageContext from "./context/language.context";
 import { useTranslation } from "react-i18next";
 
 import "./App.scss"
+import RankingPage from "./pages/Ranking.page";
 
 export default function App() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
@@ -60,6 +61,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<LoginPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/ranking" element={<RankingPage />} />
             </Routes>
           </div>
         </ThemeProvider>
