@@ -1,0 +1,77 @@
+.Dashboard {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+
+    position: absolute;
+    top: 50vh;
+    transform: translateY(-50%);
+    justify-content: center;
+
+    & > * {
+        flex-basis: 30%;
+        margin: 15px;
+    }
+
+    &__Orders {
+        display: flex;
+        position: relative;
+        top: 20px;
+        
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+
+        & > * {
+            flex-basis: 49%;
+        }
+
+        &__Stats {
+            display: flex;
+            font-size: 30px;
+
+            &-number {
+                margin-left: auto;
+                font-weight: 700;
+            }
+        }
+
+        &__Button_Container {
+            display: flex;
+            justify-content: center;
+            padding: 25px;
+        }
+
+        &__Current {
+            &-number {
+                font-weight: bold;
+                font-size: 144px;
+                position: relative;
+                top: -50px;
+                left: 70px;
+            }
+
+            &-text {
+                font-size: 22px;
+                position: relative;
+                top: -60px;
+                left: 25px;
+                text-align: center;
+            }
+        }
+    }
+
+    &__QoS {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        flex-direction: column;
+
+        &__Sub {
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+    }
+}
