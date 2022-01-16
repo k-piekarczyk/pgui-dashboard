@@ -1,77 +1,103 @@
-.Dashboard {
-    display: flex;
-    width: 100vw;
-    flex-wrap: wrap;
+@import "../breakpoints";
 
+.Dashboard {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media screen and (min-width: $middle_screen_breakpoint) {
     position: absolute;
     top: 50vh;
     transform: translateY(-50%);
+  }
+
+  .Tile {
+    width: 600px;
+    min-height: 310px;
+  }
+
+  & > * {
+    @media screen and (min-width: $middle_screen_breakpoint) {
+      flex-basis: 30%;
+    }
+    margin: 15px;
+  }
+
+  &__Orders {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 20px;
+
     justify-content: center;
+    
+    &__Spacer {
+        @media screen and (min-width: $small_screen_breakpoint) {
+            flex-basis: 10px !important;
+          }
+        // width: 10px;
+    }
 
     & > * {
-        flex-basis: 30%;
-        margin: 15px;
+      @media screen and (min-width: $small_screen_breakpoint) {
+        flex-basis: 49%;
+      }
     }
 
-    &__Orders {
-        display: flex;
-        position: relative;
-        top: 20px;
-        
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 20px;
+    &__Stats {
+      display: flex;
+      font-size: 30px;
 
-        & > * {
-            flex-basis: 49%;
-        }
-
-        &__Stats {
-            display: flex;
-            font-size: 30px;
-
-            &-number {
-                margin-left: auto;
-                font-weight: 700;
-            }
-        }
-
-        &__Button_Container {
-            display: flex;
-            justify-content: center;
-            padding: 25px;
-        }
-
-        &__Current {
-            &-number {
-                font-weight: bold;
-                font-size: 144px;
-                position: relative;
-                top: -50px;
-                left: 70px;
-            }
-
-            &-text {
-                font-size: 22px;
-                position: relative;
-                top: -60px;
-                left: 25px;
-                text-align: center;
-            }
-        }
+      &-number {
+        margin-left: auto;
+        font-weight: 700;
+      }
     }
 
-    &__QoS {
+    &__Button_Container {
+      display: flex;
+      justify-content: center;
+      padding: 25px;
+    }
+
+    &__Current {
         display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 30px;
         flex-direction: column;
+      &-number {
+        font-weight: bold;
+        font-size: 144px;
+        text-align: center;
+        line-height: 0.9;
+        margin-bottom: 20px;
+      }
 
-        &__Sub {
-            font-size: 30px;
-            text-align: center;
-            margin-bottom: 25px;
-        }
+      &-text {
+        font-size: 22px;
+        text-align: center;
+      }
     }
+  }
+
+  &__QoS {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    flex-direction: column;
+
+    &__Rating {
+      font-size: 4rem !important;
+
+      @media screen and (max-width: $small_screen_breakpoint) {
+        font-size: 3rem !important;
+      }
+    }
+
+    &__Sub {
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+  }
 }
