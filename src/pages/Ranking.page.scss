@@ -1,0 +1,40 @@
+.Ranking {
+    display: flex;
+    width: 100vw;
+    flex-wrap: wrap;
+
+    position: absolute;
+    top: 50vh;
+    transform: translateY(-50%);
+    justify-content: center;
+
+    & > * {
+        margin: 15px;
+    }
+
+    &__Orders {
+        display: flex;
+        position: relative;
+        top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+
+        & > * {
+            flex-basis: 49%;
+        }
+    }
+
+    &__Table {
+        top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 100%;
+        height: 100%;
+
+        & > * {
+            font-size: 25px;
+        }
+    }
+}
