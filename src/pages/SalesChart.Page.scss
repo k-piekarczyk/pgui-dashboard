@@ -1,8 +1,73 @@
+$breakpoint: 1100px;
+
 .PageContainer__Children {
   padding: 18px 56px;
   display: flex;
+  flex-wrap: wrap;
 
-  & > div {
-    min-width: 200px;
+  //& > div {
+  //  border-width: 2px;
+  //  border-style: solid;
+  //  border-radius: 20px;
+  //}
+
+  .category {
+
   }
+
+  .timePeriod {
+
+  }
+
+  .graph {
+    //width: 62%;
+    @media screen and (max-width: $breakpoint) {
+      width: 100%;
+    }
+    @media screen and (min-width: $breakpoint) {
+      width: 62%;
+    }
+  }
+
+  .leftBar {
+
+    //width: 35%;
+
+    @media screen and (max-width: $breakpoint) {
+      width: 100%;
+    }
+    @media screen and (min-width: $breakpoint) {
+      min-width: 400px;
+      width: 35%;
+    }
+  }
+
+  .tile {
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 20px;
+    margin: 10px;
+  }
+
+}
+
+.radioIcon {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border-width: 3px;
+  border-color: white;
+  border-style: solid;
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.checkIcon {
+  height: 15px;
+  width: 15px;
+  border-width: 3px;
+  border-color: white;
+  border-style: solid;
+  display: inline-block;
+  margin: 0 10px;
 }
