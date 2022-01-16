@@ -12,7 +12,6 @@ import LanguageContext from "./context/language.context";
 import { useTranslation } from "react-i18next";
 
 import "./App.scss"
-import RankingPage from "./pages/Ranking.page";
 
 export default function App() {
   const [mode, setMode] = React.useState<"light" | "dark">("dark");
