@@ -31,7 +31,11 @@ const resources = {
       "Order history": "Historia zamówień",
       "90 day average": "Średnia z ostatnich 90 dni",
       "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz",
-      Category: "Kategoria"
+      Category: "Kategoria",
+      Picture: "Zdjęcie",
+      Name: "Nazwa",
+      "Sold Items": "Sprzedane sztuki",
+      Turnover: "Obrót"
     },
   },
 };

@@ -15,7 +15,7 @@ export default function Dashboard() {
       loggedIn={true}
     >
       <div className="Dashboard">
-        <Tile width="600px" height="300px" header={t("Orders")}>
+        <Tile width="600px" height="300px">
           <div className="Dashboard__Orders">
             <div>
               <div className="Dashboard__Orders__Stats">

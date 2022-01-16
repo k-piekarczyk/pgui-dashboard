@@ -16,7 +16,6 @@
         display: flex;
         position: relative;
         top: 20px;
-        
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 20px;
@@ -26,17 +25,16 @@
         }
     }
 
-    &__QoS {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 30px;
-        flex-direction: column;
+    &__Table {
+        top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 20px;
+        width: 100%;
+        height: 100%;
 
-        &__Sub {
-            font-size: 30px;
-            text-align: center;
-            margin-bottom: 25px;
+        & > * {
+            font-size: 25px;
         }
     }
 }
