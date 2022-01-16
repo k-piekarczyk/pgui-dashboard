@@ -1,3 +1,4 @@
+@import "../mixins";
 $breakpoint: 1100px;
 
 .PageContainer__Children {
@@ -47,6 +48,10 @@ $breakpoint: 1100px;
     border-style: solid;
     border-radius: 20px;
     margin: 10px;
+    padding: 10px 20px;
+
+    @include theme-aware("background", "color-tile-background");
+    @include theme-aware("border-color", "color-tile-border");
   }
 
 }
@@ -56,18 +61,48 @@ $breakpoint: 1100px;
   width: 15px;
   border-radius: 50%;
   border-width: 3px;
-  border-color: white;
+  @include theme-aware("border-color", "color-text");
   border-style: solid;
   display: inline-block;
-  margin: 0 10px;
+  margin-right: 6px;
 }
 
 .checkIcon {
   height: 15px;
   width: 15px;
   border-width: 3px;
-  border-color: white;
+  @include theme-aware("border-color", "color-text");
   border-style: solid;
   display: inline-block;
-  margin: 0 10px;
+  margin-right: 6px;
+}
+
+.title {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+.optionRow {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+
+  & > .selected {
+    @include theme-aware("background-color", "color-button");
+  }
+
+}
+.optionRow:hover {
+  cursor: pointer;
+}
+.productPicker {
+  border-style: solid;
+  border-radius: 10px;
+  padding: 0 8px;
+  margin-left: 10px;
+  @include theme-aware("border-color", "color-button");
+  @include theme-aware("background", "color-button");
+}
+.selected {
+  font-weight: bold;
+  text-decoration: underline;
 }
