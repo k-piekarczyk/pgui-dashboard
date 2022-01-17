@@ -126,7 +126,7 @@ export default function SalesChart() {
       .attr('height', (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
       .attr('width', previousPeriod ? width / previousData.concat(data).length / 2 : width / data.length / 2)
       // @ts-ignore
-      .attr("class", (d: { time: string; }) => d.time.indexOf('p') != -1 ? 'previous-data' : '');
+      .attr("class", (d: { time: string; }) => d.time.indexOf('p') !== -1 ? 'previous-data' : '');
 
     // define bar values texts
     // @ts-ignore
