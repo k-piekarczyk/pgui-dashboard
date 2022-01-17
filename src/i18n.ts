@@ -38,7 +38,19 @@ const resources = {
       Turnover: "Obrót",
       "Most frequently bought": "Najczęściej kupowane",
       "Least frequently bought": "Najrzadziej kupowane",
-      "Show only first 5 positions": "Pokaż wyłącznie pierwsze 5 pozycji"
+      "Show only first 5 positions": "Pokaż wyłącznie pierwsze 5 pozycji",
+      "30 day average": "średnia z ostatnich 30 dni",
+      "Top seller": "Najczęściej kupowane",
+      "Bottom seller": "Najrzadziej kupowane",
+      "Graph": "Wykres",
+      "Sales amount": "Ilość sprzedaży",
+      "Time period": "Zakres czasu",
+      "Today": "Dzisiaj",
+      "Current week": "Obecny tydzień",
+      "Current month": "Obecny miesiąc",
+      "Include previous period": "Uwzględnij okres poprzedzający",
+      "Choose product": "Wybierz produkt",
+      "Product": "Produkt"
     },
   },
 };

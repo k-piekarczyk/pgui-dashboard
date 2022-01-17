@@ -1,0 +1,223 @@
+{
+  "turnover": {
+    "today": {
+      "labelX": "Godzina",
+      "labelY": "PLN",
+      "current": [
+        { "time": "00", "value": 218 },
+        { "time": "01", "value": 1236 },
+        { "time": "02", "value": 1420 },
+        { "time": "03", "value": 188 },
+        { "time": "04", "value": 0 },
+        { "time": "05", "value": 0 },
+        { "time": "06", "value": 147 },
+        { "time": "07", "value": 211 },
+        { "time": "08", "value": 904 },
+        { "time": "09", "value": 1089 },
+        { "time": "10", "value": 1190 },
+        { "time": "11", "value": 1020 },
+        { "time": "12", "value": 819 },
+        { "time": "13", "value": 1236 },
+        { "time": "14", "value": 1420 },
+        { "time": "15", "value": 1089 },
+        { "time": "16", "value": 1690 },
+        { "time": "17", "value": 2137 },
+        { "time": "18", "value": 1000 },
+        { "time": "19", "value": 2236 },
+        { "time": "20", "value": 1420 },
+        { "time": "21", "value": 1089 },
+        { "time": "22", "value": 1690 },
+        { "time": "23", "value": 2137 }
+
+      ],
+      "previous": [
+        { "time": "[p] 00", "value": 304 },
+        { "time": "[p] 01", "value": 815 },
+        { "time": "[p] 02", "value": 1110 },
+        { "time": "[p] 03", "value": 0 },
+        { "time": "[p] 04", "value": 119 },
+        { "time": "[p] 05", "value": 305 },
+        { "time": "[p] 06", "value": 0 },
+        { "time": "[p] 07", "value": 679 },
+        { "time": "[p] 08", "value": 723 },
+        { "time": "[p] 09", "value": 1110 },
+        { "time": "[p] 10", "value": 1670 },
+        { "time": "[p] 11", "value": 1819 },
+        { "time": "[p] 12", "value": 1900 },
+        { "time": "[p] 13", "value": 1736 },
+        { "time": "[p] 14", "value": 1420 },
+        { "time": "[p] 15", "value": 1389 },
+        { "time": "[p] 16", "value": 1690 },
+        { "time": "[p] 17", "value": 2237 },
+        { "time": "[p] 18", "value": 2105 },
+        { "time": "[p] 19", "value": 1678 },
+        { "time": "[p] 20", "value": 1420 },
+        { "time": "[p] 21", "value": 1089 },
+        { "time": "[p] 22", "value": 1690 },
+        { "time": "[p] 23", "value": 2137 }
+
+      ]
+    },
+    "week" : {
+      "labelX": "Dzień tygodnia",
+      "labelY": "PLN",
+      "current": [
+        { "time": "Poniedziałek", "value": 1000 },
+        { "time": "Wtorek", "value": 1236 },
+        { "time": "Środa", "value": 1420 },
+        { "time": "Czwartek", "value": 1089 },
+        { "time": "Piątek", "value": 1690 },
+        { "time": "Sobota", "value": 2137 },
+        { "time": "Niedziela", "value": 1460 }
+      ],
+      "previous": [
+        { "time": "[p] Poniedziałek", "value": 890 },
+        { "time": "[p] Wtorek", "value": 1036 },
+        { "time": "[p] Środa", "value": 1020 },
+        { "time": "[p] Czwartek", "value": 1589 },
+        { "time": "[p] Piątek", "value": 2150 },
+        { "time": "[p] Sobota", "value": 2045 },
+        { "time": "[p] Niedziela", "value": 1247 }
+      ]
+    },
+    "month": {
+      "labelX": "Dzień miesiąca",
+      "labelY": "PLN",
+      "current": [
+        { "time": "1 sty", "value": 1000 },
+        { "time": "2 sty", "value": 1236 },
+        { "time": "3 sty", "value": 1089 },
+        { "time": "4 sty", "value": 1690 },
+        { "time": "5 sty", "value": 2101 },
+        { "time": "6 sty", "value": 950 },
+        { "time": "7 sty", "value": 812 },
+        { "time": "8 sty", "value": 2137 },
+        { "time": "9 sty", "value": 1835 },
+        { "time": "10 sty", "value": 1877 }
+      ],
+      "previous": [
+        { "time": "[p] 1 sty", "value": 1000 },
+        { "time": "[p] 2 sty", "value": 1236 },
+        { "time": "[p] 3 sty", "value": 1089 },
+        { "time": "[p] 4 sty", "value": 1690 },
+        { "time": "[p] 5 sty", "value": 2188 },
+        { "time": "[p] 6 sty", "value": 950 },
+        { "time": "[p] 7 sty", "value": 812 },
+        { "time": "[p] 8 sty", "value": 2089 },
+        { "time": "[p] 9 sty", "value": 1835 },
+        { "time": "[p] 10 sty", "value": 1677 }
+      ]
+    }
+  },
+  "product": {
+    "today": {
+      "labelX": "Godzina",
+      "labelY": "Szt",
+      "current": [
+        { "time": "00", "value": 18 },
+        { "time": "01", "value": 236 },
+        { "time": "02", "value": 420 },
+        { "time": "03", "value": 88 },
+        { "time": "04", "value": 0 },
+        { "time": "05", "value": 0 },
+        { "time": "06", "value": 47 },
+        { "time": "07", "value": 11 },
+        { "time": "08", "value": 4 },
+        { "time": "09", "value": 89 },
+        { "time": "10", "value": 190 },
+        { "time": "11", "value": 20 },
+        { "time": "12", "value": 19 },
+        { "time": "13", "value": 236 },
+        { "time": "14", "value": 420 },
+        { "time": "15", "value": 89 },
+        { "time": "16", "value": 690 },
+        { "time": "17", "value": 137 },
+        { "time": "18", "value": 0 },
+        { "time": "19", "value": 236 },
+        { "time": "20", "value": 420 },
+        { "time": "21", "value": 89 },
+        { "time": "22", "value": 690 },
+        { "time": "23", "value": 137 }
+
+      ],
+      "previous": [
+        { "time": "[p] 00", "value": 4 },
+        { "time": "[p] 01", "value": 15 },
+        { "time": "[p] 02", "value": 110 },
+        { "time": "[p] 03", "value": 6 },
+        { "time": "[p] 04", "value": 19 },
+        { "time": "[p] 05", "value": 5 },
+        { "time": "[p] 06", "value": 0 },
+        { "time": "[p] 07", "value": 79 },
+        { "time": "[p] 08", "value": 23 },
+        { "time": "[p] 09", "value": 110 },
+        { "time": "[p] 10", "value": 670 },
+        { "time": "[p] 11", "value": 819 },
+        { "time": "[p] 12", "value": 900 },
+        { "time": "[p] 13", "value": 736 },
+        { "time": "[p] 14", "value": 420 },
+        { "time": "[p] 15", "value": 389 },
+        { "time": "[p] 16", "value": 690 },
+        { "time": "[p] 17", "value": 237 },
+        { "time": "[p] 18", "value": 105 },
+        { "time": "[p] 19", "value": 678 },
+        { "time": "[p] 20", "value": 420 },
+        { "time": "[p] 21", "value": 689 },
+        { "time": "[p] 22", "value": 690 },
+        { "time": "[p] 23", "value": 137 }
+
+      ]
+    },
+    "week" : {
+      "labelX": "Dzień tygodnia",
+      "labelY": "Szt",
+      "current": [
+        { "time": "Poniedziałek", "value": 100 },
+        { "time": "Wtorek", "value": 236 },
+        { "time": "Środa", "value": 420 },
+        { "time": "Czwartek", "value": 689 },
+        { "time": "Piątek", "value": 690 },
+        { "time": "Sobota", "value": 137 },
+        { "time": "Niedziela", "value": 460 }
+      ],
+      "previous": [
+        { "time": "[p] Poniedziałek", "value": 90 },
+        { "time": "[p] Wtorek", "value": 936 },
+        { "time": "[p] Środa", "value": 420 },
+        { "time": "[p] Czwartek", "value": 589 },
+        { "time": "[p] Piątek", "value": 150 },
+        { "time": "[p] Sobota", "value": 745 },
+        { "time": "[p] Niedziela", "value": 247 }
+      ]
+    },
+    "month": {
+      "labelX": "Dzień miesiąca",
+      "labelY": "Szt",
+      "current": [
+        { "time": "1 sty", "value": 100 },
+        { "time": "2 sty", "value": 236 },
+        { "time": "3 sty", "value": 189 },
+        { "time": "4 sty", "value": 690 },
+        { "time": "5 sty", "value": 101 },
+        { "time": "6 sty", "value": 50 },
+        { "time": "7 sty", "value": 12 },
+        { "time": "8 sty", "value": 137 },
+        { "time": "9 sty", "value": 835 },
+        { "time": "10 sty", "value": 877 }
+      ],
+      "previous": [
+        { "time": "[p] 1 sty", "value": 100 },
+        { "time": "[p] 2 sty", "value": 136 },
+        { "time": "[p] 3 sty", "value": 109 },
+        { "time": "[p] 4 sty", "value": 160 },
+        { "time": "[p] 5 sty", "value": 218 },
+        { "time": "[p] 6 sty", "value": 95 },
+        { "time": "[p] 7 sty", "value": 82 },
+        { "time": "[p] 8 sty", "value": 289 },
+        { "time": "[p] 9 sty", "value": 135 },
+        { "time": "[p] 10 sty", "value": 167 }
+      ]
+    }
+  }
+
+}
