@@ -1,0 +1,117 @@
+@import "../mixins";
+$breakpoint: 1218px;
+
+.sales-container {
+  padding: 18px 56px;
+  display: flex;
+  flex-wrap: wrap;
+
+  & .graph {
+    @media screen and (max-width: $breakpoint) {
+      width: 100%;
+    }
+    @media screen and (min-width: $breakpoint) {
+      width: 62%;
+    }
+  }
+
+  .leftBar {
+    @media screen and (max-width: $breakpoint) {
+      width: 100%;
+    }
+    @media screen and (min-width: $breakpoint) {
+      min-width: 400px;
+      width: 35%;
+    }
+  }
+
+  .tile {
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 20px;
+    margin: 10px;
+    padding: 10px 20px;
+
+    @include theme-aware("background", "color-tile-background");
+    @include theme-aware("border-color", "color-tile-border");
+  }
+}
+
+.radioIcon {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border-width: 3px;
+  @include theme-aware("border-color", "color-text");
+  border-style: solid;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.checkIcon {
+  height: 15px;
+  width: 15px;
+  border-width: 3px;
+  @include theme-aware("border-color", "color-text");
+  border-style: solid;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.title {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+.optionRow {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+
+  & > .selected:first-child {
+    @include theme-aware("background-color", "color-button");
+  }
+
+}
+.optionRow:hover {
+  cursor: pointer;
+}
+.productPicker {
+  border-style: solid;
+  border-radius: 10px;
+  padding: 0 8px;
+  margin-left: 10px;
+  @include theme-aware("border-color", "color-button");
+  @include theme-aware("background", "color-button");
+}
+.selected {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+g {
+  & > rect {
+    @include theme-aware("fill", "color-button");
+
+  }
+
+  & > rect:last-child {
+    fill: darkred;
+  }
+
+  & > rect:hover {
+    @include theme-aware("fill", "color-text");
+  }
+
+  & > .previous-data {
+    @include theme-aware("fill", "color-previous-bar");
+  }
+
+}
+
+.graph-label {
+  @include theme-aware("fill", "color-text");
+}
+.bar-label {
+  @include theme-aware("fill", "color-text");
+  font-size: 10px;
+}

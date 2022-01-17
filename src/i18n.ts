@@ -42,7 +42,16 @@ const resources = {
       "Navigate to data from chart": "Przejdź do danych z wykresu",
       "last month": "ostatni miesiąc",
       "last 3 months": "ostatnie 3 miesiące",
-      "last year": "ostatni rok"
+      "last year": "ostatni rok",
+      "Graph": "Wykres",
+      "Sales amount": "Ilość sprzedaży",
+      "Time period": "Zakres czasu",
+      "Today": "Dzisiaj",
+      "Current week": "Obecny tydzień",
+      "Current month": "Obecny miesiąc",
+      "Include previous period": "Uwzględnij okres poprzedzający",
+      "Choose product": "Wybierz produkt",
+      "Product": "Produkt"
     },
   },
 };
