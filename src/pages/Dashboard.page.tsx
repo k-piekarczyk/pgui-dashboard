@@ -119,7 +119,7 @@ export default function Dashboard() {
         </Tile>
 
         <Tile header={t("Sales chart")}>
-          <div className="Dashboard__Sales">
+          <div className="Dashboard__Sales" onClick={() => navigate("/sales-chart")}>
             <div className="Dashboard__Sales__Header">
               {t("Navigate to data from chart")}:
             </div>

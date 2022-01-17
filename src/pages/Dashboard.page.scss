@@ -276,6 +276,7 @@
     margin-left: 20px;
     margin-right: 20px;
     padding-top: 10px;
+    cursor: pointer;
 
     &__Header {
       font-size: 27px;
@@ -305,7 +306,6 @@
         }
 
         & > * {
-          cursor: pointer;
           margin: 2px;
           padding: 0 7px 0 7px;
           font-size: 20px;
