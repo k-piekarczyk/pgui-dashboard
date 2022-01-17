@@ -14,10 +14,6 @@ export default function SalesChart() {
 
   const ref = useRef(null);
 
-  useEffect(() => {
-    buildGraphData();
-  }, [category, timePeriod, previousPeriod])
-
   function buildGraphData() {
 
     if (category === "turnover") {
@@ -46,6 +42,10 @@ export default function SalesChart() {
       }*/
     }
   }
+
+  useEffect(() => {
+    buildGraphData();
+  }, [category, timePeriod, previousPeriod]);
 
 
   function buildGraph(data: ({ time: string; value: number })[], previousData: ({ time: string; value: number })[], xLabel: string, yLabel: string) {
