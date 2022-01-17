@@ -1,3 +1,5 @@
+@import "../breakpoints";
+
 .UserIcon {
   width: 50px;
   height: 50px;
@@ -7,4 +9,8 @@
   background-repeat: no-repeat;
   background-position: center;
   margin-left: 15px;
+
+  @media screen and (max-width: $medium-small_screen_breakpoint) {
+    display: none;
+  }
 }

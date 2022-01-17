@@ -6,28 +6,28 @@
   justify-content: center;
   align-items: center;
 
-  @media screen and (min-width: $middle_screen_breakpoint) {
+  @media screen and (min-width: $medium_screen_breakpoint) {
     position: absolute;
     top: 50vh;
     transform: translateY(-50%);
   }
 
-  @media screen and (max-width: $middle_screen_breakpoint) {
+  @media screen and (max-width: $medium_screen_breakpoint) {
     flex-direction: column;
   }
 
   & > * {
-    @media screen and (max-width: $middle_screen_breakpoint) {
+    @media screen and (max-width: $medium_screen_breakpoint) {
         margin-top: 30px;
       }
   }
 
   & > *:not(:first-child) {
-    @media screen and (min-width: $middle_screen_breakpoint) {
+    @media screen and (min-width: $medium_screen_breakpoint) {
       margin-left: 82px;
     }
 
-    @media screen and (max-width: $middle_screen_breakpoint) {
+    @media screen and (max-width: $medium_screen_breakpoint) {
         flex-direction: column;
       }
   }
