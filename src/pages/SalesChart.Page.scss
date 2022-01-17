@@ -110,6 +110,11 @@ $breakpoint: 1100px;
 g {
   & > rect {
     @include theme-aware("fill", "color-button");
+
+  }
+
+  & > rect:last-child {
+    fill: darkred;
   }
 
   & > rect:hover {
