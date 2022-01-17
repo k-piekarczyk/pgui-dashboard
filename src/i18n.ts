@@ -37,7 +37,8 @@ const resources = {
       "Sold Items": "Sprzedane sztuki",
       Turnover: "Obrót",
       "Most frequently bought": "Najczęściej kupowane",
-      "Least frequently bought": "Najrzadziej kupowane"
+      "Least frequently bought": "Najrzadziej kupowane",
+      "Show only first 5 positions": "Pokaż wyłącznie pierwsze 5 pozycji"
     },
   },
 };
