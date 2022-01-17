@@ -13,9 +13,9 @@ export default function Ranking() {
     const DisplayData=JsonData.items.map(
       (i: { picture: string; name: string; sold: number; turnover: number; })=>{
           return(
-              <tr>
+              <tr className="Ranking__Table__Row">
                   <td>
-                  <ProductImage imageraw={i.picture}/>
+                    <ProductImage imageraw={i.picture}/>
                   </td>
                   <td>{i.name}</td>
                   <td>{i.sold}</td>
