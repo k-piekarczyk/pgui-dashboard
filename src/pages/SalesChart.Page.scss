@@ -1,27 +1,12 @@
 @import "../mixins";
-$breakpoint: 1100px;
+$breakpoint: 1218px;
 
-.PageContainer__Children {
+.sales-container {
   padding: 18px 56px;
   display: flex;
   flex-wrap: wrap;
 
-  //& > div {
-  //  border-width: 2px;
-  //  border-style: solid;
-  //  border-radius: 20px;
-  //}
-
-  .category {
-
-  }
-
-  .timePeriod {
-
-  }
-
-  .graph {
-    //width: 62%;
+  & .graph {
     @media screen and (max-width: $breakpoint) {
       width: 100%;
     }
@@ -31,9 +16,6 @@ $breakpoint: 1100px;
   }
 
   .leftBar {
-
-    //width: 35%;
-
     @media screen and (max-width: $breakpoint) {
       width: 100%;
     }
@@ -53,7 +35,6 @@ $breakpoint: 1100px;
     @include theme-aware("background", "color-tile-background");
     @include theme-aware("border-color", "color-tile-border");
   }
-
 }
 
 .radioIcon {

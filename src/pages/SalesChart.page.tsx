@@ -182,44 +182,47 @@ export default function SalesChart() {
       previousPage={{ route: "/dashboard", name: t("Dashboard") }}
       loggedIn={true}
     >
-      <div className="leftBar">
-        <div className="tile category">
-          <div className="title">{t("Category")}</div>
-          <div className={category === "turnover" ? "optionRow selected" : "optionRow"} onClick={() => setCategory("turnover")}>
-            <span className={category === "turnover" ? "radioIcon selected" : "radioIcon"}/>
-            {t("Turnover")}
+      <div className="sales-container">
+        <div className="leftBar">
+          <div className="tile">
+            <div className="title">{t("Category")}</div>
+            <div className={category === "turnover" ? "optionRow selected" : "optionRow"} onClick={() => setCategory("turnover")}>
+              <span className={category === "turnover" ? "radioIcon selected" : "radioIcon"}/>
+              {t("Turnover")}
+            </div>
+            <div className="optionRow">
+              <span className="radioIcon"/>
+              {t("Sales amount")}
+              <div className="productPicker">{t("Choose product")}</div>
+            </div>
           </div>
-          <div className="optionRow">
-            <span className="radioIcon"/>
-            {t("Sales amount")}
-            <div className="productPicker">{t("Choose product")}</div>
+          <div className="tile">
+            <div className="title">{t("Time period")}</div>
+            <div className={timePeriod === "today" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("today")}>
+              <span className={timePeriod === "today" ? "radioIcon selected" : "radioIcon"}/>
+              {t("Today")}
+            </div>
+            <div className={timePeriod === "week" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("week")}>
+              <span className={timePeriod === "week" ? "radioIcon selected" : "radioIcon"}/>
+              {t("Current week")}
+            </div>
+            <div className={timePeriod === "month" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("month")}>
+              <span className={timePeriod === "month" ? "radioIcon selected" : "radioIcon"}/>
+              {t("Current month")}
+            </div>
+            <div className={previousPeriod ? "optionRow selected" : "optionRow"} onClick={() => setPreviousPeriod(!previousPeriod)}>
+              <span className={previousPeriod ? "checkIcon selected" : "checkIcon"}/>
+              {t("Include previous period")}
+            </div>
           </div>
         </div>
-        <div className="tile timePeriod">
-          <div className="title">{t("Time period")}</div>
-          <div className={timePeriod === "today" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("today")}>
-            <span className={timePeriod === "today" ? "radioIcon selected" : "radioIcon"}/>
-            {t("Today")}
-          </div>
-          <div className={timePeriod === "week" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("week")}>
-            <span className={timePeriod === "week" ? "radioIcon selected" : "radioIcon"}/>
-            {t("Current week")}
-          </div>
-          <div className={timePeriod === "month" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("month")}>
-            <span className={timePeriod === "month" ? "radioIcon selected" : "radioIcon"}/>
-            {t("Current month")}
-          </div>
-          <div className={previousPeriod ? "optionRow selected" : "optionRow"} onClick={() => setPreviousPeriod(!previousPeriod)}>
-            <span className={previousPeriod ? "checkIcon selected" : "checkIcon"}/>
-            {t("Include previous period")}
-          </div>
+
+        <div className="tile graph sales-container" ref={ref}>
+          <div className="title">{t("Graph")}</div>
+
         </div>
       </div>
 
-      <div className="tile graph" ref={ref}>
-        <div className="title">{t("Graph")}</div>
-
-      </div>
     </PageContainer>
   )
 }
