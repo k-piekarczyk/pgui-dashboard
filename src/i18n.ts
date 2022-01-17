@@ -35,7 +35,8 @@ const resources = {
       Picture: "Zdjęcie",
       Name: "Nazwa",
       "Sold Items": "Sprzedane sztuki",
-      Turnover: "Obrót"
+      Turnover: "Obrót",
+      "30 day average": "średnia z ostatnich 30 dni"
     },
   },
 };

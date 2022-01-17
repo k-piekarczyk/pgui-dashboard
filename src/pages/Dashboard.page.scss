@@ -1,4 +1,5 @@
 @import "../breakpoints";
+@import "../mixins";
 
 .Dashboard {
   display: flex;
@@ -15,6 +16,10 @@
   .Tile {
     width: 600px;
     min-height: 310px;
+
+    @media screen and (min-width: $medium_screen_breakpoint) {
+      min-width: 600px;
+    }
   }
 
   & > * {
@@ -31,12 +36,11 @@
     padding: 20px;
 
     justify-content: center;
-    
+
     &__Spacer {
-        @media screen and (min-width: $small_screen_breakpoint) {
-            flex-basis: 10px !important;
-          }
-        // width: 10px;
+      @media screen and (min-width: $small_screen_breakpoint) {
+        flex-basis: 10px !important;
+      }
     }
 
     & > * {
@@ -66,8 +70,8 @@
     }
 
     &__Current {
-        display: flex;
-        flex-direction: column;
+      display: flex;
+      flex-direction: column;
       &-number {
         font-weight: bold;
         font-size: 144px;
@@ -102,6 +106,104 @@
       font-size: 30px;
       text-align: center;
       margin-bottom: 25px;
+    }
+  }
+
+  &__CF {
+    display: flex;
+    flex-wrap: wrap;
+
+    padding: 20px;
+
+    justify-content: center;
+
+    &__Spacer {
+      @media screen and (min-width: $small_screen_breakpoint) {
+        flex-basis: 10px !important;
+      }
+    }
+
+    & > * {
+      @media screen and (min-width: $small_screen_breakpoint) {
+        flex-basis: 49%;
+      }
+    }
+
+    &__Testimonial_Container > *:not(:first-child) {
+      margin-top: 10px;
+    }
+
+    &__Testimonial {
+      &__Header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+
+        &-number {
+          border-radius: 50%;
+          border: solid;
+          @include theme-aware("border-color", "color-button");
+          @include theme-aware("background-color", "color-button");
+
+          display: inline-block;
+          line-height: 40px;
+          width: 46px;
+          font-size: 32px;
+          text-align: center;
+        }
+
+        &-text {
+          & > * {
+            display: inline;
+          }
+
+          & > *:first-child {
+            font-size: 19px;
+            margin-right: 5px;
+            font-weight: bold;
+          }
+
+          & > *:last-child {
+            font-size: 12px;
+          }
+        }
+      }
+
+      &__Body {
+        margin-top: 5px;
+      }
+    }
+
+    &__Average {
+      display: flex;
+      flex-direction: column;
+
+      &-number {
+        & > * {
+          display: inline;
+          font-weight: bold;
+          font-size: 25px;
+        }
+
+        & > *:first-child {
+          font-size: 144px;
+          text-align: center;
+          line-height: 0.9;
+        }
+
+        & > *:not(:first-child) {
+          margin-left: 3px;
+        }
+
+        margin-bottom: 20px;
+      }
+
+      &-text {
+        font-size: 22px;
+        text-align: center;
+      }
     }
   }
 }

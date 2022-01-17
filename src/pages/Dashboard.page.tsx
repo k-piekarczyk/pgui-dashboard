@@ -54,15 +54,52 @@ export default function Dashboard() {
               readOnly
               sx={{ marginBottom: "15px" }}
             />
-            <div className="Dashboard__QoS__Sub">
-              {`${t("90 day average")}: 4.1/5`}
-            </div>
+            <div className="Dashboard__QoS__Sub">{`${t("90 day average")}: 4.1/5`}</div>
             <Button size="small" variant="contained">
               {t("Check your category: Specialist")}
             </Button>
           </div>
         </Tile>
-        <Tile header={t("Customer feedback")}></Tile>
+
+        <Tile header={t("Customer feedback")}>
+          <div className="Dashboard__CF">
+            <div className="Dashboard__CF__Testimonial_Container">
+              <div className="Dashboard__CF__Testimonial">
+                <div className="Dashboard__CF__Testimonial__Header">
+                  <div className="Dashboard__CF__Testimonial__Header-number">4</div>
+                  <div className="Dashboard__CF__Testimonial__Header-text">
+                    <div>Aneta Żalkiewicz</div>
+                    <div>02.11.2021</div>
+                  </div>
+                </div>
+                <div className="Dashboard__CF__Testimonial__Body">
+                  Świetna obsługa, nie było żadnych problemów z dostarczeniem zamów...
+                </div>
+              </div>
+              <div className="Dashboard__CF__Testimonial">
+                <div className="Dashboard__CF__Testimonial__Header">
+                  <div className="Dashboard__CF__Testimonial__Header-number">5</div>
+                  <div className="Dashboard__CF__Testimonial__Header-text">
+                    <div>Jacek Michaliński</div>
+                    <div>28.10.2021</div>
+                  </div>
+                </div>
+                <div className="Dashboard__CF__Testimonial__Body">
+                  Świetna obsługa, nie było żadnych problemów z dostarczeniem zamów...
+                </div>
+              </div>
+            </div>
+            <div className="Dashboard__CF__Spacer" />
+            <div className="Dashboard__CF__Average">
+              <div className="Dashboard__CF__Average-number">
+                <div>4.2</div>
+                <div>/</div>
+                <div>5</div>
+              </div>
+              <div className="Dashboard__CF__Average-text">{t("30 day average")}</div>
+            </div>
+          </div>
+        </Tile>
         <Tile header={t("Offer ranking")}></Tile>
         <Tile header={t("Sales chart")}></Tile>
         <Tile header={t("Sales advice")}></Tile>
