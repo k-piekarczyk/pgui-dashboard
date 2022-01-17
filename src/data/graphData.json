@@ -1,13 +1,23 @@
 {
   "turnover": {
-    "today": [
-      { "time": "00:00", "value": 1000 },
-      { "time": "01:00", "value": 1236 },
-      { "time": "02:00", "value": 1420 },
-      { "time": "03:00", "value": 1089 },
-      { "time": "04:00", "value": 1690 },
-      { "time": "05:00", "value": 2137 }
-    ],
+    "labelX": "Godzina",
+    "labelY": "PLN",
+    "today": {
+      "current": [
+        { "time": "00", "value": 1000 },
+        { "time": "01", "value": 1236 },
+        { "time": "02", "value": 1420 },
+        { "time": "03", "value": 1089 }
+
+      ],
+      "previous": [
+        { "time": "[p] 00", "value": 1000 },
+        { "time": "[p] 01", "value": 1236 },
+        { "time": "[p] 02", "value": 1420 },
+        { "time": "[p] 03", "value": 1089 }
+
+      ]
+    },
     "week" : [
       { "time": "Poniedziałek", "value": 1000 },
       { "time": "Wtorek", "value": 1236 },

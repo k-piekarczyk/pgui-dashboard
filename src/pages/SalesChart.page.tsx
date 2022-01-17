@@ -14,13 +14,47 @@ export default function SalesChart() {
   const [chartWidth, setChartWidth] = useState(600);
 
   const ref = useRef(null);
+
   useEffect(() => {
     // @ts-ignore
     console.log('width', ref.current ? ref.current.getBoundingClientRect().width : 0);
   }, [ref.current]);
 
+  useEffect(() => {
+    buildGraphData();
+  }, [category, timePeriod, previousPeriod])
 
-  function buildGraph(data: ({ time: string; value: number })[]) {
+  function buildGraphData() {
+    buildGraph(json_data.turnover.today.current, json_data.turnover.today.previous, json_data.turnover.labelX, json_data.turnover.labelY);
+    /*if (category === "turnover") {
+      switch(timePeriod) {
+        case "today":
+          buildGraph(json_data.turnover.today.current, json_data.turnover.labelX);
+          break;
+        case "week":
+          buildGraph(json_data.turnover.week);
+          break;
+        case "month":
+          buildGraph(json_data.turnover.month);
+          break;
+      }
+    } else {
+      switch (timePeriod) {
+        case "today":
+          buildGraph(json_data.turnover.today.current);
+          break;
+        case "week":
+          buildGraph(json_data.turnover.week);
+          break;
+        case "month":
+          buildGraph(json_data.turnover.month);
+          break;
+      }
+    }*/
+  }
+
+
+  function buildGraph(data: ({ time: string; value: number })[], previousData: ({ time: string; value: number })[], xLabel: string, yLabel: string) {
     // @ts-ignore
     console.log("siemanko! chart Width: " + ref.current.offsetWidth);
 
@@ -48,7 +82,10 @@ export default function SalesChart() {
     // define x scale
     const x = d3
       .scaleBand()
-      .domain(data.map(d => d.time))
+      .domain(
+        // data.map(d => d.time)
+    previousPeriod ? previousData.concat(data).map(d => d.time) : data.map(d => d.time)
+      )
       .range([margin.left, width - margin.right])
       .padding(0.5);
 
@@ -71,9 +108,13 @@ export default function SalesChart() {
       g.attr('transform', `translate(0, ${height - margin.bottom})`)
       .call(d3.axisBottom(x));
 
+    previousPeriod ? console.log(data.concat(previousData)) : console.log(data);
+
     // define bars
     // @ts-ignore
-    const bars = (g) => g.selectAll('rect').data(data).join(
+    const bars = (g) => g.selectAll('rect').data(
+      previousPeriod ? previousData.concat(data) : data
+    ).join(
       // @ts-ignore
       (enter) => enter.append('rect'),
       // @ts-ignore
@@ -84,47 +125,33 @@ export default function SalesChart() {
       .attr('x', (d: { time: string; }) => x(d.time))
       .attr('y', (d: { value: d3.NumberValue; }) => y(d.value))
       .attr('height', (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
-      .attr('width', 30);
+      .attr('width', 20)
+      // @ts-ignore
+      .attr("class", (d: { time: string; }) => d.time.indexOf('p') != -1 ? 'previous-data' : '');
 
     // put everything together
     svg.append('g').call(yAxis);
     svg.append('g').call(xAxis);
     svg.append('g').call(bars);
 
+    // ad x label
+    svg.append('text')
+      .attr("class", "graph-label")
+      .attr("text-anchor", "end")
+      .attr("x", width)
+      .attr("y", height - 6)
+      .text(xLabel);
+
+    // ad y label
+    svg.append("text")
+      .attr("class", "graph-label")
+      .attr("text-anchor", "end")
+      .attr("y", 0)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text(yLabel);
+
   }
-
-  function buildGraphData() {
-    if (category === "turnover") {
-      switch(timePeriod) {
-        case "today":
-          buildGraph(json_data.turnover.today);
-          break;
-        case "week":
-          buildGraph(json_data.turnover.week);
-          break;
-        case "month":
-          buildGraph(json_data.turnover.month);
-          break;
-      }
-    } else {
-      switch (timePeriod) {
-        case "today":
-          buildGraph(json_data.turnover.today);
-          break;
-        case "week":
-          buildGraph(json_data.turnover.week);
-          break;
-        case "month":
-          buildGraph(json_data.turnover.month);
-          break;
-      }
-    }
-  }
-
-  useEffect(() => {
-    buildGraphData();
-  }, [category, timePeriod, previousPeriod])
-
 
   return (
     <PageContainer

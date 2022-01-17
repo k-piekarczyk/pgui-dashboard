@@ -115,4 +115,13 @@ g {
   & > rect:hover {
     @include theme-aware("fill", "color-text");
   }
+
+  & > .previous-data {
+    @include theme-aware("fill", "color-previous-bar");
+  }
+
+}
+
+.graph-label {
+  @include theme-aware("fill", "color-text");
 }
