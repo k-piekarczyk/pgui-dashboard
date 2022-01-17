@@ -67,7 +67,7 @@ $breakpoint: 1218px;
   align-items: center;
   padding: 5px 0;
 
-  & > .selected {
+  & > .selected:first-child {
     @include theme-aware("background-color", "color-button");
   }
 

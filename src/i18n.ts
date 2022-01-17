@@ -40,7 +40,8 @@ const resources = {
       "Current month": "Obecny miesiąc",
       "Include previous period": "Uwzględnij okres poprzedzający",
       "Choose product": "Wybierz produkt",
-      "Dashboard": "Pulpit"
+      "Dashboard": "Pulpit",
+      "Product": "Produkt"
     },
   },
 };

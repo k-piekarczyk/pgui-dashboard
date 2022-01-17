@@ -8,13 +8,11 @@ import json_data from "../data/graphData.json";
 export default function SalesChart() {
   const { t } = useTranslation();
 
-  const [category, setCategory] = useState("turnover");
+  const [category, setCategory] = useState("");
   const [timePeriod, setTimePeriod] = useState("today");
   const [previousPeriod, setPreviousPeriod] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
-
-
 
   useEffect(() => {
     function buildGraph(data: ({ time: string; value: number })[], previousData: ({ time: string; value: number })[], xLabel: string, yLabel: string) {
@@ -42,10 +40,7 @@ export default function SalesChart() {
       // define x scale
       const x = d3
         .scaleBand()
-        .domain(
-          // data.map(d => d.time)
-          previousPeriod ? previousData.concat(data).map(d => d.time) : data.map(d => d.time),
-        )
+        .domain(previousPeriod ? previousData.concat(data).map(d => d.time) : data.map(d => d.time))
         .range([margin.left, width - margin.right])
         .padding(0.5);
 
@@ -67,8 +62,6 @@ export default function SalesChart() {
       const xAxis = (g) =>
         g.attr("transform", `translate(0, ${height - margin.bottom})`)
           .call(d3.axisBottom(x));
-
-      previousPeriod ? console.log(data.concat(previousData)) : console.log(data);
 
       // define bars
       // @ts-ignore
@@ -109,7 +102,6 @@ export default function SalesChart() {
         .attr("width", previousPeriod ? width / previousData.concat(data).length / 2 : width / data.length / 2)
         // @ts-ignore
         .attr("class", "bar-label")
-
         .text((d: { value: number }) => d.value);
 
       // put everything together
@@ -139,7 +131,7 @@ export default function SalesChart() {
 
     function buildGraphData() {
 
-      if (category === "turnover") {
+      if (category === "Turnover") {
         switch (timePeriod) {
           case "today":
             buildGraph(json_data.turnover.today.current, json_data.turnover.today.previous, json_data.turnover.today.labelX, json_data.turnover.today.labelY);
@@ -151,26 +143,23 @@ export default function SalesChart() {
             buildGraph(json_data.turnover.month.current, json_data.turnover.month.previous, json_data.turnover.month.labelX, json_data.turnover.month.labelY);
             break;
         }
-      } else {
-        /*switch (timePeriod) {
+      } else if (category === "Product") {
+        switch (timePeriod) {
           case "today":
-            buildGraph(json_data.turnover.today.current);
+            buildGraph(json_data.product.today.current, json_data.product.today.previous, json_data.product.today.labelX, json_data.product.today.labelY);
             break;
           case "week":
-            buildGraph(json_data.turnover.week);
+            buildGraph(json_data.product.week.current, json_data.product.week.previous, json_data.product.week.labelX, json_data.product.week.labelY);
             break;
           case "month":
-            buildGraph(json_data.turnover.month);
+            buildGraph(json_data.product.month.current, json_data.product.month.previous, json_data.product.month.labelX, json_data.product.month.labelY);
             break;
-        }*/
+        }
       }
     }
 
     buildGraphData();
   }, [category, timePeriod, previousPeriod]);
-
-
-
 
   return (
     <PageContainer
@@ -182,14 +171,15 @@ export default function SalesChart() {
         <div className="leftBar">
           <div className="tile">
             <div className="title">{t("Category")}</div>
-            <div className={category === "turnover" ? "optionRow selected" : "optionRow"}
-                 onClick={() => setCategory("turnover")}>
-              <span className={category === "turnover" ? "radioIcon selected" : "radioIcon"} />
+            <div className={category === "Turnover" ? "optionRow selected" : "optionRow"}
+                 onClick={() => setCategory("Turnover")}>
+              <span className={category === "Turnover" ? "radioIcon selected" : "radioIcon"} />
               {t("Turnover")}
             </div>
-            <div className="optionRow">
-              <span className="radioIcon" />
-              {t("Sales amount")}
+            <div className={category === "Product" ? "optionRow" : "optionRow"}
+            onClick={() => setCategory("Product")}>
+              <span className={category === "Product" ? "radioIcon selected" : "radioIcon"} />
+              <span className={category === "Product" ? "selected" : ""}>{t("Sales amount")}</span>
               <div className="productPicker">{t("Choose product")}</div>
             </div>
           </div>
