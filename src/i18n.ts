@@ -29,7 +29,17 @@ const resources = {
       "Currently processed orders": "Obecnie realizowane zamówienia",
       "Order history": "Historia zamówień",
       "90 day average": "Średnia z ostatnich 90 dni",
-      "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz"
+      "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz",
+      "Graph": "Wykres",
+      "Turnover": "Obrót",
+      "Category": "Kategoria",
+      "Sales amount": "Ilość sprzedaży",
+      "Time period": "Zakres czasu",
+      "Today": "Dzisiaj",
+      "Current week": "Obecny tydzień",
+      "Current month": "Obecny miesiąc",
+      "Include previous period": "Uwzględnij okres poprzedzający",
+      "Choose product": "Wybierz produkt"
     },
   },
 };

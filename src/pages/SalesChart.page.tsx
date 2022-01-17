@@ -2,7 +2,8 @@ import { useTranslation } from "react-i18next";
 import PageContainer from "../components/PageContainer.component";
 import "./SalesChart.Page.scss";
 import * as d3 from 'd3';
-import { useEffect, useState } from "react";
+import { createRef, useEffect, useRef, useState } from "react";
+import json_data from "../data/graphData.json";
 
 export default function SalesChart() {
   const { t } = useTranslation();
@@ -10,9 +11,18 @@ export default function SalesChart() {
   const [category, setCategory] = useState("turnover");
   const [timePeriod, setTimePeriod] = useState("today");
   const [previousPeriod, setPreviousPeriod] = useState(false);
+  const [chartWidth, setChartWidth] = useState(600);
+
+  const ref = useRef(null);
+  useEffect(() => {
+    // @ts-ignore
+    console.log('width', ref.current ? ref.current.getBoundingClientRect().width : 0);
+  }, [ref.current]);
+
 
   function buildGraph(data: ({ time: string; value: number })[]) {
-    console.log("siemanko!");
+    // @ts-ignore
+    console.log("siemanko! chart Width: " + ref.current.offsetWidth);
 
     // define margin
     const margin = {
@@ -23,7 +33,8 @@ export default function SalesChart() {
     }
 
     //define size
-    const width = 600;
+    // @ts-ignore
+    const width = ref.current.offsetWidth - margin.left - margin.right;
     const height = 400;
 
     // define y scale
@@ -39,7 +50,7 @@ export default function SalesChart() {
       .scaleBand()
       .domain(data.map(d => d.time))
       .range([margin.left, width - margin.right])
-      .padding(0.3);
+      .padding(0.5);
 
 
     // define svg
@@ -73,7 +84,7 @@ export default function SalesChart() {
       .attr('x', (d: { time: string; }) => x(d.time))
       .attr('y', (d: { value: d3.NumberValue; }) => y(d.value))
       .attr('height', (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
-      .attr('width', 20);
+      .attr('width', 30);
 
     // put everything together
     svg.append('g').call(yAxis);
@@ -82,78 +93,37 @@ export default function SalesChart() {
 
   }
 
-  useEffect(() => {
-    buildGraph(turnoverWeek);
-  })
-
-  const turnoverWeek = [
-    { time: "Poniedziałek", value: 1000 },
-    { time: "Wtorek", value: 1236 },
-    { time: "Środa", value: 1420 },
-    { time: "Czwartek", value: 1089 },
-    { time: "Piątek", value: 1690 },
-    { time: "Sobota", value: 2137 },
-
-  ];
-
-/*
-  const data = [1, 2, 3, 4, 5, 8];
-
-
-  const yMax = Math.max(...turnoverWeek.map(d => d.value));
-  const width = 600;
-  const height = 400;
-  const y = d3.scaleLinear()
-      .domain([0, yMax])
-      .range([0, height])
-
-  const x = d3.scaleBand()
-    .domain(turnoverWeek.map(d => d.time))
-    .range([0, width])
-    .padding(0.1)
-
+  function buildGraphData() {
+    if (category === "turnover") {
+      switch(timePeriod) {
+        case "today":
+          buildGraph(json_data.turnover.today);
+          break;
+        case "week":
+          buildGraph(json_data.turnover.week);
+          break;
+        case "month":
+          buildGraph(json_data.turnover.month);
+          break;
+      }
+    } else {
+      switch (timePeriod) {
+        case "today":
+          buildGraph(json_data.turnover.today);
+          break;
+        case "week":
+          buildGraph(json_data.turnover.week);
+          break;
+        case "month":
+          buildGraph(json_data.turnover.month);
+          break;
+      }
+    }
+  }
 
   useEffect(() => {
-    d3.select("svg").remove();
-
-    const svg = d3
-      .select('.graph')
-      .append("svg")
-      .attr("height", height)
-      .attr("width", width);
-
-  console.log(x("Wtorek"))
-
-    // wartości na wykresie (prostokąty)
-    svg.selectAll('rect')
-      .data(turnoverWeek)
-      .enter()
-      .append('rect')
-      .attr('width', 20)
-      .attr('height', 20)
-      .attr('fill', 'orange')
-      .attr('x', d => x(d.time) ?? null)
-      .attr('y', d => height - y(d.value) ?? null);
-
-  // oś X
-    const xAxisScale = d3.scaleBand()
-      .domain(turnoverWeek.map(d => d.time))
-      .range([0, width])
-      .padding(0.1)
-
-    const xAxis = d3.axisBottom(xAxisScale)
-      .tickFormat((d, i) => d)
-      .tickSizeOuter(0)
-
-    const xAxisTranslate = height-20;
-
-    svg.append('g')
-      .attr("transform", "translate(0, " + xAxisTranslate + ")")
-      .call(xAxis)
-
-
-  });
-*/
+    buildGraphData();
+  }, [category, timePeriod, previousPeriod])
 
 
   return (
@@ -164,40 +134,41 @@ export default function SalesChart() {
     >
       <div className="leftBar">
         <div className="tile category">
-          <div className="title">Kategoria</div>
-          <div className={category == "turnover" ? "optionRow selected" : "optionRow"} onClick={() => setCategory("turnover")}>
-            <span className={category == "turnover" ? "radioIcon selected" : "radioIcon"}/>
-            Obrót
+          <div className="title">{t("Category")}</div>
+          <div className={category === "turnover" ? "optionRow selected" : "optionRow"} onClick={() => setCategory("turnover")}>
+            <span className={category === "turnover" ? "radioIcon selected" : "radioIcon"}/>
+            {t("Turnover")}
           </div>
           <div className="optionRow">
             <span className="radioIcon"/>
-            Liczba sprzedanych sztuk
-            <div className="productPicker">Wybierz produkt</div>
+            {t("Sales amount")}
+            <div className="productPicker">{t("Choose product")}</div>
           </div>
         </div>
         <div className="tile timePeriod">
-          <div className="title">Zakres czasu</div>
-          <div className={timePeriod == "today" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("today")}>
-            <span className={timePeriod == "today" ? "radioIcon selected" : "radioIcon"}/>
-            Dzisiaj
+          <div className="title">{t("Time period")}</div>
+          <div className={timePeriod === "today" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("today")}>
+            <span className={timePeriod === "today" ? "radioIcon selected" : "radioIcon"}/>
+            {t("Today")}
           </div>
-          <div className={timePeriod == "week" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("week")}>
-            <span className={timePeriod == "week" ? "radioIcon selected" : "radioIcon"}/>
-            Obecny tydzień
+          <div className={timePeriod === "week" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("week")}>
+            <span className={timePeriod === "week" ? "radioIcon selected" : "radioIcon"}/>
+            {t("Current week")}
           </div>
-          <div className={timePeriod == "month" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("month")}>
-            <span className={timePeriod == "month" ? "radioIcon selected" : "radioIcon"}/>
-            Obecny miesiąc
+          <div className={timePeriod === "month" ? "optionRow selected" : "optionRow"} onClick={() => setTimePeriod("month")}>
+            <span className={timePeriod === "month" ? "radioIcon selected" : "radioIcon"}/>
+            {t("Current month")}
           </div>
           <div className={previousPeriod ? "optionRow selected" : "optionRow"} onClick={() => setPreviousPeriod(!previousPeriod)}>
             <span className={previousPeriod ? "checkIcon selected" : "checkIcon"}/>
-            Uwzględnij analogiczny okres poprzedzający
+            {t("Include previous period")}
           </div>
         </div>
       </div>
 
-      <div className="tile graph">
-        <div className="title">Wykres</div>
+      <div className="tile graph" ref={ref}>
+        <div className="title">{t("Graph")}</div>
+
       </div>
     </PageContainer>
   )

@@ -111,4 +111,8 @@ g {
   & > rect {
     @include theme-aware("fill", "color-button");
   }
+
+  & > rect:hover {
+    @include theme-aware("fill", "color-text");
+  }
 }
