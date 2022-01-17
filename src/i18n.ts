@@ -9,6 +9,7 @@ const resources = {
   pl: {
     translation: {
       "Account selection": "Wybór konta",
+      Dashboard: "Strona główna",
       Theme: "Motyw",
       Dark: "Ciemny",
       Light: "Jasny",
@@ -29,6 +30,15 @@ const resources = {
       "Currently processed orders": "Obecnie realizowane zamówienia",
       "Order history": "Historia zamówień",
       "90 day average": "Średnia z ostatnich 90 dni",
+      "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz",
+      Category: "Kategoria",
+      Picture: "Zdjęcie",
+      Name: "Nazwa",
+      "Sold Items": "Sprzedane sztuki",
+      Turnover: "Obrót",
+      "30 day average": "średnia z ostatnich 30 dni",
+      "Top seller": "Najczęściej kupowane",
+      "Bottom seller": "Najrzadziej kupowane",
       "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz",
       "Graph": "Wykres",
       "Turnover": "Obrót",

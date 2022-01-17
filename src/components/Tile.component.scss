@@ -8,14 +8,13 @@
     border-radius: 20px;
 
     & > .Tile__header {
-        position: relative;
-        top: 20px;
-        left: 20px;
+        margin: 10px 17px 0px 17px;
+        padding: 0 3px;
         font-size: 36px;
+        border-bottom: 2px solid;
+        @include theme-aware("border-bottom-color", "color-hline");
     }
-}
 
-.Tile {
     @include theme-aware("background", "color-tile-background");
     @include theme-aware("border-color", "color-tile-border");
 }

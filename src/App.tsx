@@ -8,6 +8,7 @@ import getPalette from "./palette";
 
 import LoginPage from "./pages/Login.page";
 import DashboardPage from "./pages/Dashboard.page";
+import RankingPage from "./pages/Ranking.page";
 import LanguageContext from "./context/language.context";
 import { useTranslation } from "react-i18next";
 
@@ -61,6 +62,7 @@ export default function App() {
             <Routes>
               <Route path="/" element={<LoginPage />} />
               <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/ranking" element={<RankingPage />} />
               <Route path="/sales-chart" element={<SalesChartPage />} />
             </Routes>
           </div>

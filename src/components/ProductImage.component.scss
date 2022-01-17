@@ -1,0 +1,9 @@
+@import "../mixins";
+
+.ProductImage {
+    height: 80px;
+    width: 80px;
+    object-fit: scale-down;
+    display: flex;
+    justify-content: center;
+}

@@ -59,7 +59,7 @@
   },
   "homepage": "https://pgui.soggysock.pl",
   "volta": {
-    "node": "16.13.1"
+    "node": "14.18.3"
   },
   "devDependencies": {
     "@types/debug": "^4.1.7",
