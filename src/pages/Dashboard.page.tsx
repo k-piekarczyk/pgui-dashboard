@@ -1,12 +1,16 @@
 import { Button, Rating } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 import PageContainer from "../components/PageContainer.component";
 import Tile from "../components/Tile.component";
+
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import "./Dashboard.page.scss";
 
 export default function Dashboard() {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <PageContainer
@@ -100,9 +104,43 @@ export default function Dashboard() {
             </div>
           </div>
         </Tile>
-        <Tile header={t("Offer ranking")}></Tile>
+
+        <Tile header={t("Offer ranking")}>
+          <div className="Dashboard__Rankings" onClick={() => navigate("/ranking")}>
+            <div className="Dashboard__Rankings__Entry">
+              <div className="Dashboard__Rankings__Entry-header">{t("Top seller")}</div>
+              <div className="Dashboard__Rankings__Entry-name">Zotac GeForce RTX 3060 Ti AMP White 8GB GDDR6</div>
+            </div>
+            <div className="Dashboard__Rankings__Entry">
+              <div className="Dashboard__Rankings__Entry-header">{t("Bottom seller")}</div>
+              <div className="Dashboard__Rankings__Entry-name">Xiaomi Mi True Wireless Earbuds Basic 2</div>
+            </div>
+          </div>
+        </Tile>
+
         <Tile header={t("Sales chart")}></Tile>
-        <Tile header={t("Sales advice")}></Tile>
+
+        <Tile header={t("Sales advice")}>
+          <div className="Dashboard__Advice">
+            <div className="Dashboard__Advice__Entry">
+              <div className="Dashboard__Advice__Entry-text">
+                Czy wiesz, że możesz usprawnić swój kontakt z klientami o 60% korzystając z chatu online, dostępnego z
+                poziomu zakładki...
+              </div>
+              <div className="Dashboard__Advice__Entry-icon">
+                <ArrowForwardIosIcon />
+              </div>
+            </div>
+            <div className="Dashboard__Advice__Entry">
+              <div className="Dashboard__Advice__Entry-text">
+                Zamieszczenie zdjęć produktu w wysokiej rozdzielczości zwiększa wskaźnik kliknięć o ponad 46%!
+                </div>
+              <div className="Dashboard__Advice__Entry-icon">
+                <ArrowForwardIosIcon />
+              </div>
+            </div>
+          </div>
+        </Tile>
       </div>
     </PageContainer>
   );

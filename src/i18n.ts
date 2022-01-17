@@ -36,7 +36,9 @@ const resources = {
       Name: "Nazwa",
       "Sold Items": "Sprzedane sztuki",
       Turnover: "Obrót",
-      "30 day average": "średnia z ostatnich 30 dni"
+      "30 day average": "średnia z ostatnich 30 dni",
+      "Top seller": "Najczęściej kupowane",
+      "Bottom seller": "Najrzadziej kupowane",
     },
   },
 };
