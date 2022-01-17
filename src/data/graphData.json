@@ -1,43 +1,111 @@
 {
   "turnover": {
-    "labelX": "Godzina",
-    "labelY": "PLN",
     "today": {
+      "labelX": "Godzina",
+      "labelY": "PLN",
       "current": [
         { "time": "00", "value": 1000 },
         { "time": "01", "value": 1236 },
         { "time": "02", "value": 1420 },
-        { "time": "03", "value": 1089 }
+        { "time": "03", "value": 1089 },
+        { "time": "04", "value": 1690 },
+        { "time": "05", "value": 2137 },
+        { "time": "06", "value": 1000 },
+        { "time": "07", "value": 1236 },
+        { "time": "08", "value": 1420 },
+        { "time": "09", "value": 1089 },
+        { "time": "10", "value": 1690 },
+        { "time": "11", "value": 2137 },
+        { "time": "12", "value": 1000 },
+        { "time": "13", "value": 1236 },
+        { "time": "14", "value": 1420 },
+        { "time": "15", "value": 1089 },
+        { "time": "16", "value": 1690 },
+        { "time": "17", "value": 2137 },
+        { "time": "18", "value": 1000 },
+        { "time": "19", "value": 1236 },
+        { "time": "20", "value": 1420 },
+        { "time": "21", "value": 1089 },
+        { "time": "22", "value": 1690 },
+        { "time": "23", "value": 2137 }
 
       ],
       "previous": [
         { "time": "[p] 00", "value": 1000 },
         { "time": "[p] 01", "value": 1236 },
         { "time": "[p] 02", "value": 1420 },
-        { "time": "[p] 03", "value": 1089 }
+        { "time": "[p] 03", "value": 1089 },
+        { "time": "[p] 04", "value": 1690 },
+        { "time": "[p] 05", "value": 2137 },
+        { "time": "[p] 06", "value": 1000 },
+        { "time": "[p] 07", "value": 1236 },
+        { "time": "[p] 08", "value": 1420 },
+        { "time": "[p] 09", "value": 1089 },
+        { "time": "[p] 10", "value": 1690 },
+        { "time": "[p] 11", "value": 2137 },
+        { "time": "[p] 12", "value": 1000 },
+        { "time": "[p] 13", "value": 1236 },
+        { "time": "[p] 14", "value": 1420 },
+        { "time": "[p] 15", "value": 1089 },
+        { "time": "[p] 16", "value": 1690 },
+        { "time": "[p] 17", "value": 2137 },
+        { "time": "[p] 18", "value": 1000 },
+        { "time": "[p] 19", "value": 1236 },
+        { "time": "[p] 20", "value": 1420 },
+        { "time": "[p] 21", "value": 1089 },
+        { "time": "[p] 22", "value": 1690 },
+        { "time": "[p] 23", "value": 2137 }
 
       ]
     },
-    "week" : [
-      { "time": "Poniedziałek", "value": 1000 },
-      { "time": "Wtorek", "value": 1236 },
-      { "time": "Środa", "value": 1420 },
-      { "time": "Czwartek", "value": 1089 },
-      { "time": "Piątek", "value": 1690 },
-      { "time": "Sobota", "value": 2137 }
-    ],
-    "month": [
-      { "time": "1 sty", "value": 1000 },
-      { "time": "2 sty", "value": 1236 },
-      { "time": "3 sty", "value": 1089 },
-      { "time": "4 sty", "value": 1690 },
-      { "time": "5 sty", "value": 2137 },
-      { "time": "6 sty", "value": 950 },
-      { "time": "7 sty", "value": 812 },
-      { "time": "8 sty", "value": 2137 },
-      { "time": "9 sty", "value": 1835 },
-      { "time": "10 sty", "value": 1877 }
-    ]
+    "week" : {
+      "labelX": "Dzień tygodnia",
+      "labelY": "PLN",
+      "current": [
+        { "time": "Poniedziałek", "value": 1000 },
+        { "time": "Wtorek", "value": 1236 },
+        { "time": "Środa", "value": 1420 },
+        { "time": "Czwartek", "value": 1089 },
+        { "time": "Piątek", "value": 1690 },
+        { "time": "Sobota", "value": 2137 }
+      ],
+      "previous": [
+        { "time": "[p] Poniedziałek", "value": 1000 },
+        { "time": "[p] Wtorek", "value": 1236 },
+        { "time": "[p] Środa", "value": 1420 },
+        { "time": "[p] Czwartek", "value": 1089 },
+        { "time": "[p] Piątek", "value": 1690 },
+        { "time": "[p] Sobota", "value": 2137 }
+      ]
+    },
+    "month": {
+      "labelX": "Dzień miesiąca",
+      "labelY": "PLN",
+      "current": [
+        { "time": "1 sty", "value": 1000 },
+        { "time": "2 sty", "value": 1236 },
+        { "time": "3 sty", "value": 1089 },
+        { "time": "4 sty", "value": 1690 },
+        { "time": "5 sty", "value": 2137 },
+        { "time": "6 sty", "value": 950 },
+        { "time": "7 sty", "value": 812 },
+        { "time": "8 sty", "value": 2137 },
+        { "time": "9 sty", "value": 1835 },
+        { "time": "10 sty", "value": 1877 }
+      ],
+      "previous": [
+        { "time": "[p] 1 sty", "value": 1000 },
+        { "time": "[p] 2 sty", "value": 1236 },
+        { "time": "[p] 3 sty", "value": 1089 },
+        { "time": "[p] 4 sty", "value": 1690 },
+        { "time": "[p] 5 sty", "value": 2137 },
+        { "time": "[p] 6 sty", "value": 950 },
+        { "time": "[p] 7 sty", "value": 812 },
+        { "time": "[p] 8 sty", "value": 2137 },
+        { "time": "[p] 9 sty", "value": 1835 },
+        { "time": "[p] 10 sty", "value": 1877 }
+      ]
+    }
   }
 
 }

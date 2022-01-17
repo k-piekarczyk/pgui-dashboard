@@ -11,7 +11,6 @@ export default function SalesChart() {
   const [category, setCategory] = useState("turnover");
   const [timePeriod, setTimePeriod] = useState("today");
   const [previousPeriod, setPreviousPeriod] = useState(false);
-  const [chartWidth, setChartWidth] = useState(600);
 
   const ref = useRef(null);
 
@@ -25,21 +24,21 @@ export default function SalesChart() {
   }, [category, timePeriod, previousPeriod])
 
   function buildGraphData() {
-    buildGraph(json_data.turnover.today.current, json_data.turnover.today.previous, json_data.turnover.labelX, json_data.turnover.labelY);
-    /*if (category === "turnover") {
+
+    if (category === "turnover") {
       switch(timePeriod) {
         case "today":
-          buildGraph(json_data.turnover.today.current, json_data.turnover.labelX);
+          buildGraph(json_data.turnover.today.current, json_data.turnover.today.previous, json_data.turnover.today.labelX, json_data.turnover.today.labelY);
           break;
         case "week":
-          buildGraph(json_data.turnover.week);
+          buildGraph(json_data.turnover.week.current, json_data.turnover.week.previous, json_data.turnover.week.labelX, json_data.turnover.week.labelY);
           break;
         case "month":
-          buildGraph(json_data.turnover.month);
+          buildGraph(json_data.turnover.month.current, json_data.turnover.month.previous, json_data.turnover.month.labelX, json_data.turnover.month.labelY);
           break;
       }
     } else {
-      switch (timePeriod) {
+      /*switch (timePeriod) {
         case "today":
           buildGraph(json_data.turnover.today.current);
           break;
@@ -49,8 +48,8 @@ export default function SalesChart() {
         case "month":
           buildGraph(json_data.turnover.month);
           break;
-      }
-    }*/
+      }*/
+    }
   }
 
 
@@ -69,7 +68,7 @@ export default function SalesChart() {
     //define size
     // @ts-ignore
     const width = ref.current.offsetWidth - margin.left - margin.right;
-    const height = 400;
+    const height = width * 0.7;
 
     // define y scale
     const yMax = Math.max(...data.map((d) => d.value));
@@ -129,10 +128,34 @@ export default function SalesChart() {
       // @ts-ignore
       .attr("class", (d: { time: string; }) => d.time.indexOf('p') != -1 ? 'previous-data' : '');
 
+    // define bar values texts
+    // @ts-ignore
+    const barsTexts = (g) => g.selectAll('text').data(
+      previousPeriod ? previousData.concat(data) : data
+    ).join(
+      // @ts-ignore
+      (enter) => enter.append('text'),
+      // @ts-ignore
+      (update) => update,
+      // @ts-ignore
+      (exit) => exit.remove()
+    )
+      // @ts-ignore
+      .attr('x', (d: { time: string; }) => x(d.time))
+      .attr('transform', `translate(${previousPeriod ? width / previousData.concat(data).length / 8 : width / data.length / 8}, 0)`)
+      .attr('y', (d: { value: d3.NumberValue; }) => y(d.value) - 10)
+      .attr('height', (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
+      .attr('width', previousPeriod ? width / previousData.concat(data).length / 2 : width / data.length / 2)
+      // @ts-ignore
+      .attr("class", 'bar-label')
+
+      .text((d: {value: number}) => d.value);
+
     // put everything together
     svg.append('g').call(yAxis);
     svg.append('g').call(xAxis);
     svg.append('g').call(bars);
+    svg.append('g').call(barsTexts);
 
     // ad x label
     svg.append('text')

@@ -125,3 +125,7 @@ g {
 .graph-label {
   @include theme-aware("fill", "color-text");
 }
+.bar-label {
+  @include theme-aware("fill", "color-text");
+  font-size: 10px;
+}
