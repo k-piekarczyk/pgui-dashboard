@@ -1,8 +1,9 @@
+@import "../mixins";
+
 .Ranking {
     display: flex;
     width: 100vw;
     flex-wrap: wrap;
-
     position: absolute;
     top: 50vh;
     transform: translateY(-50%);
@@ -12,19 +13,21 @@
         margin: 15px;
     }
 
-    &__Orders {
-        display: flex;
-        position: relative;
+    &__Options {
         top: 20px;
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 20px;
-
-        & > * {
-            flex-basis: 49%;
         }
-    }
 
+        &__Title {
+            top: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 20px;
+            width: 100%
+        }
+        
     &__Table {
         top: 20px;
         padding-left: 20px;
@@ -41,4 +44,38 @@
         }
 
     }
+}
+
+.optionRow {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    padding: 5px 0;
+  
+    & > .selected {
+      @include theme-aware("background-color", "color-button");
+      font-weight: bold;
+    }
+  
+}
+
+.radioIcon {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border-width: 3px;
+    @include theme-aware("border-color", "color-text");
+    border-style: solid;
+    display: inline-block;
+    margin-right: 6px;
+}
+  
+.checkIcon {
+    height: 15px;
+    width: 15px;
+    border-width: 3px;
+    @include theme-aware("border-color", "color-text");
+    border-style: solid;
+    display: inline-block;
+    margin-right: 6px;
 }

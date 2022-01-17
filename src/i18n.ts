@@ -35,7 +35,9 @@ const resources = {
       Picture: "Zdjęcie",
       Name: "Nazwa",
       "Sold Items": "Sprzedane sztuki",
-      Turnover: "Obrót"
+      Turnover: "Obrót",
+      "Most frequently bought": "Najczęściej kupowane",
+      "Least frequently bought": "Najrzadziej kupowane"
     },
   },
 };
