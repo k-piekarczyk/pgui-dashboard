@@ -288,8 +288,6 @@
       justify-content: space-between;
       align-items: center;
 
-      
-
       @media screen and (max-width: $small_screen_breakpoint) {
         justify-content: center;
       }
@@ -318,6 +316,7 @@
         }
       }
 
+      // TODO: Czarek, do your magic here :)
       &-chart {
         height: 160px;
         width: 60%;
