@@ -106,3 +106,9 @@ $breakpoint: 1100px;
   font-weight: bold;
   text-decoration: underline;
 }
+
+g {
+  & > rect {
+    @include theme-aware("fill", "color-button");
+  }
+}
