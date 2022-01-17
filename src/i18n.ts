@@ -39,10 +39,7 @@ const resources = {
       "30 day average": "średnia z ostatnich 30 dni",
       "Top seller": "Najczęściej kupowane",
       "Bottom seller": "Najrzadziej kupowane",
-      "Check your category: Specialist": "Sprawdź swoją kategorię: Wyjadacz",
       "Graph": "Wykres",
-      "Turnover": "Obrót",
-      "Category": "Kategoria",
       "Sales amount": "Ilość sprzedaży",
       "Time period": "Zakres czasu",
       "Today": "Dzisiaj",
@@ -50,7 +47,6 @@ const resources = {
       "Current month": "Obecny miesiąc",
       "Include previous period": "Uwzględnij okres poprzedzający",
       "Choose product": "Wybierz produkt",
-      "Dashboard": "Pulpit",
       "Product": "Produkt"
     },
   },
