@@ -9,8 +9,4 @@
   background-repeat: no-repeat;
   background-position: center;
   margin-left: 15px;
-
-  @media screen and (max-width: $medium-small_screen_breakpoint) {
-    display: none;
-  }
 }

@@ -2,10 +2,9 @@
 @import "../breakpoints";
 
 .PageContainer {
-
   &__Controls {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     padding: 8px 16px 8px 16px;
     height: 75px;
@@ -13,7 +12,7 @@
     &__Nav {
       display: flex;
       align-items: center;
-    
+
       & > div {
         cursor: pointer;
       }
@@ -30,14 +29,14 @@
         margin-top: 7px;
         @include theme-aware("background", "color-tile-border");
       }
-      
+
       &-text {
         margin-left: 10px;
-        font-size: 30px;
+        font-size: 1.5em;
         @include theme-aware("color", "color-text");
 
         @media screen and (max-width: $medium-small_screen_breakpoint) {
-          display: none;
+          font-size: 1.1em;
         }
       }
     }
@@ -47,9 +46,14 @@
       margin-left: auto;
     }
 
-    &__Lang, &__Theme {
+    &__Lang,
+    &__Theme {
       & > button {
-        margin-left: .6em !important;
+        margin-left: 0.6em !important;
+      }
+
+      @media screen and (max-width: $medium-small_screen_breakpoint) {
+        display: none;
       }
     }
   }
@@ -65,7 +69,7 @@
       align-items: flex-start;
       padding-left: 15px;
     }
-    
+
     &-text {
       display: block;
       margin: 0;
@@ -76,16 +80,15 @@
     }
 
     &__Clock {
-
       @media screen and (min-width: $medium-small_screen_breakpoint) {
         margin-left: auto;
         font-size: 2em;
       }
-      
+
       font-size: 1.1em;
 
       &-time {
-        margin-right: .2em;
+        margin-right: 0.2em;
         font-weight: 600;
       }
 
