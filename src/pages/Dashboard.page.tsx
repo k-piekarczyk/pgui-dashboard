@@ -118,7 +118,24 @@ export default function Dashboard() {
           </div>
         </Tile>
 
-        <Tile header={t("Sales chart")}></Tile>
+        <Tile header={t("Sales chart")}>
+          <div className="Dashboard__Sales">
+            <div className="Dashboard__Sales__Header">
+              {t("Navigate to data from chart")}:
+            </div>
+            <div className="Dashboard__Sales__Chart">
+              <div className="Dashboard__Sales__Chart-labels">
+                <div>{t("last month")}</div>
+                <div>{t("last 3 months")}</div>
+                <div>{t("last year")}</div>
+              </div>
+
+              {/* TODO: Czarek, do your magic here :) */}
+              <div className="Dashboard__Sales__Chart-chart"></div>
+
+            </div>
+          </div>
+        </Tile>
 
         <Tile header={t("Sales advice")}>
           <div className="Dashboard__Advice">

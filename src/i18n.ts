@@ -39,6 +39,10 @@ const resources = {
       "30 day average": "średnia z ostatnich 30 dni",
       "Top seller": "Najczęściej kupowane",
       "Bottom seller": "Najrzadziej kupowane",
+      "Navigate to data from chart": "Przejdź do danych z wykresu",
+      "last month": "ostatni miesiąc",
+      "last 3 months": "ostatnie 3 miesiące",
+      "last year": "ostatni rok"
     },
   },
 };
