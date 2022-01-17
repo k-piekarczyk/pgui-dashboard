@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import PageContainer from "../components/PageContainer.component";
 import "./SalesChart.Page.scss";
 import * as d3 from 'd3';
-import { createRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import json_data from "../data/graphData.json";
 
 export default function SalesChart() {
@@ -13,11 +13,6 @@ export default function SalesChart() {
   const [previousPeriod, setPreviousPeriod] = useState(false);
 
   const ref = useRef(null);
-
-  useEffect(() => {
-    // @ts-ignore
-    console.log('width', ref.current ? ref.current.getBoundingClientRect().width : 0);
-  }, [ref.current]);
 
   useEffect(() => {
     buildGraphData();
