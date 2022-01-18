@@ -77,7 +77,7 @@ const PageContainer: FunctionComponent<PageContainerProps> = (props) => {
 
         <div className="PageContainer__Header__Clock">
           <span className="PageContainer__Header__Clock-time">
-            {currentTime.toFormat("hh:mm", { locale: i18n.language })}
+            {currentTime.toFormat("HH:mm")}
           </span>
           <span className="PageContainer__Header__Clock-date">
             {currentTime.toFormat("dd LLLL yyyy", { locale: i18n.language })}
