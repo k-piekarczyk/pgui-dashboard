@@ -3,14 +3,135 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import PageContainer from "../components/PageContainer.component";
 import Tile from "../components/Tile.component";
+import data from "../data/graphDataDashboard.json";
 
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 import "./Dashboard.page.scss";
+import { useCallback, useEffect, useRef } from "react";
+import * as d3 from "d3";
 
 export default function Dashboard() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const ref = useRef<HTMLDivElement>(null);
+
+  const buildGraph = useCallback(() => {
+    // define margin
+    const margin = {
+      top: 18,
+      right: 40,
+      bottom: 20,
+      left: 40,
+    };
+
+    //define size
+    // @ts-ignore
+    const width = (ref.current !== null ? ref.current.getBoundingClientRect().width : 200) - margin.left - margin.right;
+    const height = (ref.current !== null ? ref.current.getBoundingClientRect().height : 400) - margin.top - margin.bottom;
+
+    // define y scale
+    const yMax = Math.max(...data.map((d) => d.value));
+    const y = d3
+      .scaleLinear()
+      .domain([0, yMax])
+      .range([height - margin.bottom, margin.top])
+    ;
+
+    // define x scale
+    const x = d3
+      .scaleBand()
+      .domain(data.map(d => d.year))
+      .range([margin.left, width - margin.right])
+      .padding(0.5);
+
+
+    // define svg
+    d3.selectAll("svg").remove();
+    const svg = d3
+      .select(".graph")
+      .append("svg")
+      .attr("height", height)
+      .attr("width", width);
+
+    // define axis
+    // @ts-ignore
+    const yAxis = (g) => g.attr("transform", `translate(${margin.left}, 0)`)
+      .call(d3.axisLeft(y));
+
+    // @ts-ignore
+    const xAxis = (g) =>
+      g.attr("transform", `translate(0, ${height - margin.bottom})`)
+        .call(d3.axisBottom(x));
+
+    // define bars
+    // @ts-ignore
+    const bars = (g) => g.selectAll("rect")
+      .data(data)
+      .join(
+      // @ts-ignore
+      (enter) => enter.append("rect"),
+      // @ts-ignore
+      (update) => update,
+      // @ts-ignore
+      (exit) => exit.remove(),
+    )
+      .attr("x", (d: { year: string; }) => x(d.year))
+      .attr("y", (d: { value: d3.NumberValue; }) => y(d.value))
+      .attr("height", (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
+      .attr("width", width / data.length / 2)
+
+    // define bar values texts
+    // @ts-ignore
+    const barsTexts = (g) => g.selectAll("text")
+      .data(data)
+      .join(
+      // @ts-ignore
+      (enter) => enter.append("text"),
+      // @ts-ignore
+      (update) => update,
+      // @ts-ignore
+      (exit) => exit.remove(),
+      )
+      // @ts-ignore
+      .attr("x", (d: { year: string; }) => x(d.year))
+      .attr("transform", `translate(${width / data.length / 8}, 0)`)
+      .attr("y", (d: { value: d3.NumberValue; }) => y(d.value) - 10)
+      .attr("height", (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
+      .attr("width", width / data.length / 2)
+      // @ts-ignore
+      .attr("class", "bar-label")
+      .text((d: { value: number }) => d.value);
+
+    // put everything together
+    svg.append("g").call(yAxis);
+    svg.append("g").call(xAxis);
+    svg.append("g").call(bars);
+    svg.append("g").call(barsTexts);
+
+  }, []);
+
+  useEffect(() => {
+    let x = 0;
+
+    function handleResize() {
+      if (x > 10) {
+
+        setTimeout(buildGraph, 100);
+        x = 0;
+      } else {
+        x++;
+      }
+
+      return undefined;
+    }
+
+    window.addEventListener('resize', handleResize)
+  }, [buildGraph]);
+
+  useEffect(() => {
+    setTimeout(buildGraph, 100);
+  }, [buildGraph]);
 
   return (
     <PageContainer
@@ -130,8 +251,7 @@ export default function Dashboard() {
                 <div>{t("last year")}</div>
               </div>
 
-              {/* TODO: Czarek, do your magic here :) */}
-              <div className="Dashboard__Sales__Chart-chart"></div>
+              <div className="Dashboard__Sales__Chart-chart graph" ref={ref}/>
 
             </div>
           </div>

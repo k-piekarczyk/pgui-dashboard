@@ -9,7 +9,7 @@ export default function SalesChart() {
   const { t } = useTranslation();
 
   const [category, setCategory] = useState("");
-  const [timePeriod, setTimePeriod] = useState("today");
+  const [timePeriod, setTimePeriod] = useState("");
   const [previousPeriod, setPreviousPeriod] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
