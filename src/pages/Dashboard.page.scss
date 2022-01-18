@@ -254,7 +254,7 @@
       }
 
       &-text {
-        width: 90%
+        width: 90%;
       }
 
       &-icon {
@@ -268,6 +268,67 @@
         margin-left: 12px;
         @include theme-aware("border-color", "color-button");
         @include theme-aware("background-color", "color-button");
+      }
+    }
+  }
+
+  &__Sales {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    cursor: pointer;
+
+    &__Header {
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
+
+    &__Chart {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+
+      @media screen and (max-width: $small_screen_breakpoint) {
+        justify-content: center;
+      }
+
+      &-labels {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        @media screen and (max-width: $small_screen_breakpoint) {
+          align-items: stretch;
+          text-align: center;
+          width: 60%;
+          margin-bottom: 20px;
+        }
+
+        & > * {
+          margin: 2px;
+          padding: 0 7px 0 7px;
+          font-size: 20px;
+          border: solid;
+          border-radius: 15px;
+          @include theme-aware("border-color", "color-button");
+          @include theme-aware("background-color", "color-button");
+        }
+      }
+
+
+      &-chart {
+        height: 160px;
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        @media screen and (max-width: $small_screen_breakpoint) {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
       }
     }
   }

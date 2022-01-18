@@ -2,134 +2,135 @@ import { useTranslation } from "react-i18next";
 import PageContainer from "../components/PageContainer.component";
 import "./SalesChart.Page.scss";
 import * as d3 from "d3";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import json_data from "../data/graphData.json";
 
 export default function SalesChart() {
   const { t } = useTranslation();
 
   const [category, setCategory] = useState("");
-  const [timePeriod, setTimePeriod] = useState("today");
+  const [timePeriod, setTimePeriod] = useState("");
   const [previousPeriod, setPreviousPeriod] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    function buildGraph(data: ({ time: string; value: number })[], previousData: ({ time: string; value: number })[], xLabel: string, yLabel: string) {
-
-      // define margin
-      const margin = {
-        top: 40,
-        right: 40,
-        bottom: 40,
-        left: 40,
-      };
-
-      //define size
-      const width = ref.current!.offsetWidth - margin.left - margin.right;
-      const height = width * 0.7;
-
-      // define y scale
-      const yMax = Math.max(...data.map((d) => d.value));
-      const y = d3
-        .scaleLinear()
-        .domain([0, yMax])
-        .range([height - margin.bottom, margin.top])
-      ;
-
-      // define x scale
-      const x = d3
-        .scaleBand()
-        .domain(previousPeriod ? previousData.concat(data).map(d => d.time) : data.map(d => d.time))
-        .range([margin.left, width - margin.right])
-        .padding(0.5);
 
 
-      // define svg
-      d3.select("svg").remove();
-      const svg = d3
-        .select(".graph")
-        .append("svg")
-        .attr("height", height)
-        .attr("width", width);
+  const buildGraphDataFn = useCallback(
+    () => {
+      function buildGraph(data: ({ time: string; value: number })[], previousData: ({ time: string; value: number })[], xLabel: string, yLabel: string) {
 
-      // define axis
-      // @ts-ignore
-      const yAxis = (g) => g.attr("transform", `translate(${margin.left}, 0)`)
-        .call(d3.axisLeft(y));
+        // define margin
+        const margin = {
+          top: 40,
+          right: 40,
+          bottom: 40,
+          left: 40,
+        };
 
-      // @ts-ignore
-      const xAxis = (g) =>
-        g.attr("transform", `translate(0, ${height - margin.bottom})`)
-          .call(d3.axisBottom(x));
+        //define size
+        const width = ref.current!.offsetWidth - margin.left - margin.right;
+        const height = width * 0.7;
 
-      // define bars
-      // @ts-ignore
-      const bars = (g) => g.selectAll("rect").data(
-        previousPeriod ? previousData.concat(data) : data,
-      ).join(
+        // define y scale
+        const yMax = Math.max(...data.map((d) => d.value));
+        const y = d3
+          .scaleLinear()
+          .domain([0, yMax])
+          .range([height - margin.bottom, margin.top])
+        ;
+
+        // define x scale
+        const x = d3
+          .scaleBand()
+          .domain(previousPeriod ? previousData.concat(data).map(d => d.time) : data.map(d => d.time))
+          .range([margin.left, width - margin.right])
+          .padding(0.5);
+
+
+        // define svg
+        d3.select("svg").remove();
+        const svg = d3
+          .select(".graph")
+          .append("svg")
+          .attr("height", height)
+          .attr("width", width);
+
+        // define axis
         // @ts-ignore
-        (enter) => enter.append("rect"),
-        // @ts-ignore
-        (update) => update,
-        // @ts-ignore
-        (exit) => exit.remove(),
-      )
-        .attr("x", (d: { time: string; }) => x(d.time))
-        .attr("y", (d: { value: d3.NumberValue; }) => y(d.value))
-        .attr("height", (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
-        .attr("width", previousPeriod ? width / previousData.concat(data).length / 2 : width / data.length / 2)
-        // @ts-ignore
-        .attr("class", (d: { time: string; }) => d.time.indexOf("p") !== -1 ? "previous-data" : "");
+        const yAxis = (g) => g.attr("transform", `translate(${margin.left}, 0)`)
+          .call(d3.axisLeft(y));
 
-      // define bar values texts
-      // @ts-ignore
-      const barsTexts = (g) => g.selectAll("text").data(
-        previousPeriod ? previousData.concat(data) : data,
-      ).join(
         // @ts-ignore
-        (enter) => enter.append("text"),
+        const xAxis = (g) =>
+          g.attr("transform", `translate(0, ${height - margin.bottom})`)
+            .call(d3.axisBottom(x));
+
+        // define bars
         // @ts-ignore
-        (update) => update,
+        const bars = (g) => g.selectAll("rect").data(
+          previousPeriod ? previousData.concat(data) : data,
+        ).join(
+          // @ts-ignore
+          (enter) => enter.append("rect"),
+          // @ts-ignore
+          (update) => update,
+          // @ts-ignore
+          (exit) => exit.remove(),
+        )
+          .attr("x", (d: { time: string; }) => x(d.time))
+          .attr("y", (d: { value: d3.NumberValue; }) => y(d.value))
+          .attr("height", (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
+          .attr("width", previousPeriod ? width / previousData.concat(data).length / 2 : width / data.length / 2)
+          // @ts-ignore
+          .attr("class", (d: { time: string; }) => d.time.indexOf("p") !== -1 ? "previous-data" : "");
+
+        // define bar values texts
         // @ts-ignore
-        (exit) => exit.remove(),
-      )
-        // @ts-ignore
-        .attr("x", (d: { time: string; }) => x(d.time))
-        .attr("transform", `translate(${previousPeriod ? width / previousData.concat(data).length / 8 : width / data.length / 8}, 0)`)
-        .attr("y", (d: { value: d3.NumberValue; }) => y(d.value) - 10)
-        .attr("height", (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
-        .attr("width", previousPeriod ? width / previousData.concat(data).length / 2 : width / data.length / 2)
-        // @ts-ignore
-        .attr("class", "bar-label")
-        .text((d: { value: number }) => d.value);
+        const barsTexts = (g) => g.selectAll("text").data(
+          previousPeriod ? previousData.concat(data) : data,
+        ).join(
+          // @ts-ignore
+          (enter) => enter.append("text"),
+          // @ts-ignore
+          (update) => update,
+          // @ts-ignore
+          (exit) => exit.remove(),
+        )
+          // @ts-ignore
+          .attr("x", (d: { time: string; }) => x(d.time))
+          .attr("transform", `translate(${previousPeriod ? width / previousData.concat(data).length / 8 : width / data.length / 8}, 0)`)
+          .attr("y", (d: { value: d3.NumberValue; }) => y(d.value) - 10)
+          .attr("height", (d: { value: d3.NumberValue; }) => y(0) - y(d.value))
+          .attr("width", previousPeriod ? width / previousData.concat(data).length / 2 : width / data.length / 2)
+          // @ts-ignore
+          .attr("class", "bar-label")
+          .text((d: { value: number }) => d.value);
 
-      // put everything together
-      svg.append("g").call(yAxis);
-      svg.append("g").call(xAxis);
-      svg.append("g").call(bars);
-      svg.append("g").call(barsTexts);
+        // put everything together
+        svg.append("g").call(yAxis);
+        svg.append("g").call(xAxis);
+        svg.append("g").call(bars);
+        svg.append("g").call(barsTexts);
 
-      // ad x label
-      svg.append("text")
-        .attr("class", "graph-label")
-        .attr("text-anchor", "end")
-        .attr("x", width)
-        .attr("y", height - 6)
-        .text(xLabel);
+        // ad x label
+        svg.append("text")
+          .attr("class", "graph-label")
+          .attr("text-anchor", "end")
+          .attr("x", width)
+          .attr("y", height - 6)
+          .text(xLabel);
 
-      // ad y label
-      svg.append("text")
-        .attr("class", "graph-label")
-        .attr("text-anchor", "end")
-        .attr("y", 0)
-        .attr("dy", ".75em")
-        .attr("transform", "rotate(-90)")
-        .text(yLabel);
+        // ad y label
+        svg.append("text")
+          .attr("class", "graph-label")
+          .attr("text-anchor", "end")
+          .attr("y", 0)
+          .attr("dy", ".75em")
+          .attr("transform", "rotate(-90)")
+          .text(yLabel);
 
-    }
-
-    function buildGraphData() {
+      }
 
       if (category === "Turnover") {
         switch (timePeriod) {
@@ -156,10 +157,34 @@ export default function SalesChart() {
             break;
         }
       }
+    },[category, timePeriod, previousPeriod]
+  );
+
+
+
+  useEffect(() => {
+    let x = 0;
+
+    function handleResize() {
+      if (x > 10) {
+        buildGraphDataFn();
+        x = 0;
+      } else {
+        x++;
+      }
+
+      return undefined;
     }
 
-    buildGraphData();
-  }, [category, timePeriod, previousPeriod]);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
+  }, [buildGraphDataFn]);
+
+  // @ts-ignore
+  useEffect(() => setTimeout(buildGraphDataFn, 100), [buildGraphDataFn]);
 
   return (
     <PageContainer

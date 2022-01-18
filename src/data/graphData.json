@@ -1,7 +1,7 @@
 {
   "turnover": {
     "today": {
-      "labelX": "Godzina",
+      "labelX": "Godzina/Hour",
       "labelY": "PLN",
       "current": [
         { "time": "00", "value": 218 },
@@ -59,7 +59,7 @@
       ]
     },
     "week" : {
-      "labelX": "Dzień tygodnia",
+      "labelX": "Dzień tygodnia/Week day",
       "labelY": "PLN",
       "current": [
         { "time": "Poniedziałek", "value": 1000 },
@@ -81,11 +81,11 @@
       ]
     },
     "month": {
-      "labelX": "Dzień miesiąca",
+      "labelX": "Dzień miesiąca/Month day",
       "labelY": "PLN",
       "current": [
         { "time": "1 sty", "value": 1000 },
-        { "time": "2 sty", "value": 1236 },
+        { "time": "2 sty", "value": 1036 },
         { "time": "3 sty", "value": 1089 },
         { "time": "4 sty", "value": 1690 },
         { "time": "5 sty", "value": 2101 },
@@ -111,8 +111,8 @@
   },
   "product": {
     "today": {
-      "labelX": "Godzina",
-      "labelY": "Szt",
+      "labelX": "Godzina/Hour",
+      "labelY": "Szt/Qty",
       "current": [
         { "time": "00", "value": 18 },
         { "time": "01", "value": 236 },
@@ -136,7 +136,7 @@
         { "time": "19", "value": 236 },
         { "time": "20", "value": 420 },
         { "time": "21", "value": 89 },
-        { "time": "22", "value": 690 },
+        { "time": "22", "value": 990 },
         { "time": "23", "value": 137 }
 
       ],
@@ -169,20 +169,20 @@
       ]
     },
     "week" : {
-      "labelX": "Dzień tygodnia",
-      "labelY": "Szt",
+      "labelX": "Dzień tygodnia/Week day",
+      "labelY": "Szt/Qty",
       "current": [
         { "time": "Poniedziałek", "value": 100 },
         { "time": "Wtorek", "value": 236 },
         { "time": "Środa", "value": 420 },
         { "time": "Czwartek", "value": 689 },
-        { "time": "Piątek", "value": 690 },
+        { "time": "Piątek", "value": 790 },
         { "time": "Sobota", "value": 137 },
         { "time": "Niedziela", "value": 460 }
       ],
       "previous": [
         { "time": "[p] Poniedziałek", "value": 90 },
-        { "time": "[p] Wtorek", "value": 936 },
+        { "time": "[p] Wtorek", "value": 236 },
         { "time": "[p] Środa", "value": 420 },
         { "time": "[p] Czwartek", "value": 589 },
         { "time": "[p] Piątek", "value": 150 },
@@ -191,8 +191,8 @@
       ]
     },
     "month": {
-      "labelX": "Dzień miesiąca",
-      "labelY": "Szt",
+      "labelX": "Dzień miesiąca/Month day",
+      "labelY": "Szt/Qty",
       "current": [
         { "time": "1 sty", "value": 100 },
         { "time": "2 sty", "value": 236 },
