@@ -11,7 +11,7 @@ export default function Ranking() {
 
   const [frequentlyBought, setFrequentlyBought] = useState("mostOften");
   const [useTop5Products, setUseTop5Products] = useState(false);
-  const [imageVisibility, _] = useState(true);
+  const [imageVisibility] = useState(true);
 
   function numberWithSpaces(x: { toString: () => string; }) {
     var parts = x.toString().split(".");
