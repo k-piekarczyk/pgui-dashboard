@@ -127,7 +127,11 @@ export default function Dashboard() {
       return undefined;
     }
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
   }, [buildGraph]);
 
   useEffect(() => {
