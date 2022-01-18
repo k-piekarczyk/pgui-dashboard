@@ -1,7 +1,7 @@
 {
   "turnover": {
     "today": {
-      "labelX": "Godzina",
+      "labelX": "Godzina/Hour",
       "labelY": "PLN",
       "current": [
         { "time": "00", "value": 218 },
@@ -59,7 +59,7 @@
       ]
     },
     "week" : {
-      "labelX": "Dzień tygodnia",
+      "labelX": "Dzień tygodnia/Week day",
       "labelY": "PLN",
       "current": [
         { "time": "Poniedziałek", "value": 1000 },
@@ -81,7 +81,7 @@
       ]
     },
     "month": {
-      "labelX": "Dzień miesiąca",
+      "labelX": "Dzień miesiąca/Month day",
       "labelY": "PLN",
       "current": [
         { "time": "1 sty", "value": 1000 },
@@ -111,8 +111,8 @@
   },
   "product": {
     "today": {
-      "labelX": "Godzina",
-      "labelY": "Szt",
+      "labelX": "Godzina/Hour",
+      "labelY": "Szt/Qty",
       "current": [
         { "time": "00", "value": 18 },
         { "time": "01", "value": 236 },
@@ -169,8 +169,8 @@
       ]
     },
     "week" : {
-      "labelX": "Dzień tygodnia",
-      "labelY": "Szt",
+      "labelX": "Dzień tygodnia/Week day",
+      "labelY": "Szt/Qty",
       "current": [
         { "time": "Poniedziałek", "value": 100 },
         { "time": "Wtorek", "value": 236 },
@@ -191,8 +191,8 @@
       ]
     },
     "month": {
-      "labelX": "Dzień miesiąca",
-      "labelY": "Szt",
+      "labelX": "Dzień miesiąca/Month day",
+      "labelY": "Szt/Qty",
       "current": [
         { "time": "1 sty", "value": 100 },
         { "time": "2 sty", "value": 236 },

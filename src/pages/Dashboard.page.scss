@@ -316,17 +316,19 @@
         }
       }
 
-      // TODO: Czarek, do your magic here :)
+
       &-chart {
         height: 160px;
         width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
 
         @media screen and (max-width: $small_screen_breakpoint) {
           width: 100%;
           margin-bottom: 20px;
         }
 
-        border: 2px dotted red;
       }
     }
   }
