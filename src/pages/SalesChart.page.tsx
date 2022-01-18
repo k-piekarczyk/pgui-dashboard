@@ -176,7 +176,11 @@ export default function SalesChart() {
       return undefined;
     }
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    }
   }, [buildGraphDataFn]);
 
   // @ts-ignore
