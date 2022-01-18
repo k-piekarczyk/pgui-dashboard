@@ -11,17 +11,43 @@ export default function Ranking() {
 
   const [frequentlyBought, setFrequentlyBought] = useState("mostOften");
   const [useTop5Products, setUseTop5Products] = useState(false);
+  const [imageVisibility, setImageVisiblity] = useState(true);
 
   function numberWithSpaces(x: { toString: () => string; }) {
     var parts = x.toString().split(".");
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
     return parts.join(",");
-}
+  }
+
+  function HeaderDisplay(){
+    if (imageVisibility) {
+    return(
+      <tr>
+        <th className="Ranking__Table__Headline__Image">{t("Picture")}</th>
+        <th className="Ranking__Table__Headline__Name">{t("Name")}</th>
+        <th className="Ranking__Table__Headline__Number">{t("Sold Items")}</th>
+        <th className="Ranking__Table__Headline__Number">
+          {t("Turnover")+ " ["+JsonData.currency+"]"}
+        </th>
+      </tr>
+    )
+    }
+    return(
+      <tr>
+        <th className="Ranking__Table__Headline__Name">{t("Name")}</th>
+        <th className="Ranking__Table__Headline__Number">{t("Sold Items")}</th>
+        <th className="Ranking__Table__Headline__Number">
+          {t("Turnover")+ " ["+JsonData.currency+"]"}
+        </th>
+      </tr>
+    )
+  }
 
   function JsonDataDisplay(){
     const ArrayJson = Array.from(JsonData.items)
     const LoadedJson = frequentlyBought === "mostOften" ? ArrayJson : ArrayJson.reverse()
     const FilteredJson = useTop5Products ? LoadedJson.slice(0,5) : LoadedJson
+    if (imageVisibility) {
     const DisplayData=FilteredJson.map(
       (i: { picture: string; name: string; sold: number; turnover: number; })=>{
           return(
@@ -29,6 +55,21 @@ export default function Ranking() {
                 <td className="Ranking__Table__Row__Image">
                   <ProductImage imageraw={i.picture}/>
                 </td>
+                <td className="Ranking__Table__Row__Name">{i.name}</td>
+                <td className="Ranking__Table__Row__Number">{i.sold}</td>
+                <td className="Ranking__Table__Row__Number">
+                  {numberWithSpaces(i.turnover.toFixed(2))}
+                </td>
+              </tr>
+          )
+      }
+    )
+    return DisplayData
+    }
+    const DisplayData=FilteredJson.map(
+      (i: { picture: string; name: string; sold: number; turnover: number; })=>{
+          return(
+              <tr key={i.name}>
                 <td className="Ranking__Table__Row__Name">{i.name}</td>
                 <td className="Ranking__Table__Row__Number">{i.sold}</td>
                 <td className="Ranking__Table__Row__Number">
@@ -65,16 +106,11 @@ export default function Ranking() {
           </div>
         </Tile>
         <Tile width="1400px" height="600px">
+          <div className="Ranking__Fix">
+          </div>
           <table className="Ranking__Table">
             <thead className="Ranking__Table__Headline">
-              <tr>
-                <th className="Ranking__Table__Headline__Image">{t("Picture")}</th>
-                <th className="Ranking__Table__Headline__Name">{t("Name")}</th>
-                <th className="Ranking__Table__Headline__Number">{t("Sold Items")}</th>
-                <th className="Ranking__Table__Headline__Number">
-                  {t("Turnover")+ " ["+JsonData.currency+"]"}
-                </th>
-              </tr>
+              {HeaderDisplay()}
             </thead>
             <tbody className="Ranking__Table__Row">
               {JsonDataDisplay()}

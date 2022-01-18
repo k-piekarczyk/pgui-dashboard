@@ -27,18 +27,16 @@
         }
         
     &__Table {
-        top: 20px;
+        top: 10px;
         padding-left: 20px;
         padding-right: 20px;
-        padding-top: 20px;
+        padding-top: 10px;
         width: 100%;
         display: table;
         
 
         & > * {
             font-size: 25px;
-            overflow: auto;
- 
         }
 
         &__Row {
@@ -83,6 +81,16 @@
             }
         }
 
+    }
+
+    &__Fix {
+        @include theme-aware("background", "color-tile-background");
+        height: 6px;
+        padding-top: 3px;
+        position: fixed;
+        margin-top: -1px;
+        margin-left: 18px;
+        width: 73%;
     }
 }
 
@@ -130,4 +138,8 @@ th {
     padding-top: 20px;
     padding-bottom: 20px;
     @include theme-aware("background", "color-tile-background");
+  }
+
+tr {
+    padding-bottom: 20px;
   }
