@@ -25,7 +25,7 @@ export default function Ranking() {
     const DisplayData=FilteredJson.map(
       (i: { picture: string; name: string; sold: number; turnover: number; })=>{
           return(
-              <tr className="Ranking__Table__Row" key={i.name}>
+              <tr key={i.name}>
                 <td className="Ranking__Table__Row__Image">
                   <ProductImage imageraw={i.picture}/>
                 </td>
@@ -66,8 +66,8 @@ export default function Ranking() {
         </Tile>
         <Tile width="1400px" height="600px">
           <table className="Ranking__Table">
-            <thead>
-              <tr className="Ranking__Table__Headline">
+            <thead className="Ranking__Table__Headline">
+              <tr>
                 <th className="Ranking__Table__Headline__Image">{t("Picture")}</th>
                 <th className="Ranking__Table__Headline__Name">{t("Name")}</th>
                 <th className="Ranking__Table__Headline__Number">{t("Sold Items")}</th>
@@ -76,9 +76,9 @@ export default function Ranking() {
                 </th>
               </tr>
             </thead>
-              <tbody>
-                {JsonDataDisplay()}
-              </tbody>
+            <tbody className="Ranking__Table__Row">
+              {JsonDataDisplay()}
+            </tbody>
           </table>
         </Tile>
       </div>
