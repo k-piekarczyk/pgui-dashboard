@@ -47,12 +47,13 @@ export default function Dashboard() {
 
 
     // define svg
-    d3.selectAll("svg").remove();
+    d3.selectAll(".svg-graph").remove();
     const svg = d3
       .select(".graph")
       .append("svg")
       .attr("height", height)
-      .attr("width", width);
+      .attr("width", width)
+      .attr('class', 'svg-graph');
 
     // define axis
     // @ts-ignore
