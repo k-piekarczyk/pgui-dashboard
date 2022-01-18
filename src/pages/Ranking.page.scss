@@ -4,10 +4,8 @@
     display: flex;
     width: 100vw;
     flex-wrap: wrap;
-    position: absolute;
-    top: 50vh;
-    transform: translateY(-50%);
     justify-content: center;
+    
 
     & > * {
         margin: 15px;
@@ -39,8 +37,50 @@
             font-size: 25px;
         }
 
+        & tbody {
+            overflow-y: auto;
+        }
+
         &__Row {
-            height: 100px;
+            height: 90px;
+            padding-top: 20px;
+
+            & > * {
+                font-size: 25px;
+            }
+
+            &__Image {
+                padding-left: 20px;
+            }
+
+            &__Name {
+                text-align: left;
+            }
+
+            &__Number {
+                text-align: right;
+            }
+        }
+
+        &__Headline {
+            height: 70px;
+
+            & > * {
+                font-size: 25px;
+            }
+
+            &__Image {
+                text-align: left;
+                padding-left: 20px;
+            }
+
+            &__Name {
+                text-align: left;
+            }
+
+            &__Number {
+                text-align: right;
+            }
         }
 
     }
@@ -52,11 +92,14 @@
     font-size: 25px;
     padding: 5px 0;
   
-    & > .selected {
+    & > .selected2 {
       @include theme-aware("background-color", "color-button");
-      font-weight: bold;
     }
   
+}
+
+.selected2 {
+    font-weight: bold;
 }
 
 .radioIcon {

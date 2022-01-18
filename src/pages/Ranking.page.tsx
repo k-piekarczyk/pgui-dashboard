@@ -12,36 +12,33 @@ export default function Ranking() {
   const [frequentlyBought, setFrequentlyBought] = useState("mostOften");
   const [useTop5Products, setUseTop5Products] = useState(false);
 
+  function numberWithSpaces(x: { toString: () => string; }) {
+    var parts = x.toString().split(".");
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    return parts.join(",");
+}
+
   function JsonDataDisplay(){
-    const DisplayData=JsonData.items.map(
+    const ArrayJson = Array.from(JsonData.items)
+    const LoadedJson = frequentlyBought === "mostOften" ? ArrayJson : ArrayJson.reverse()
+    const FilteredJson = useTop5Products ? LoadedJson.slice(0,5) : LoadedJson
+    const DisplayData=FilteredJson.map(
       (i: { picture: string; name: string; sold: number; turnover: number; })=>{
           return(
-              <tr className="Ranking__Table__Row">
-                  <td>
-                    <ProductImage imageraw={i.picture}/>
-                  </td>
-                  <td>{i.name}</td>
-                  <td>{i.sold}</td>
-                  <td>{i.turnover}</td>
+              <tr className="Ranking__Table__Row" key={i.name}>
+                <td className="Ranking__Table__Row__Image">
+                  <ProductImage imageraw={i.picture}/>
+                </td>
+                <td className="Ranking__Table__Row__Name">{i.name}</td>
+                <td className="Ranking__Table__Row__Number">{i.sold}</td>
+                <td className="Ranking__Table__Row__Number">
+                  {numberWithSpaces(i.turnover.toFixed(2))}
+                </td>
               </tr>
           )
       }
     )
-    return(
-        <div>
-          <thead>
-              <tr>
-              <th>{t("Picture")}</th>
-              <th>{t("Name")}</th>
-              <th>{t("Sold Items")}</th>
-              <th>{t("Turnover")+ " ["+JsonData.currency+"]"}</th>
-              </tr>
-          </thead>
-          <tbody>
-              {DisplayData}
-          </tbody>
-        </div>
-    )
+    return DisplayData
   }
 
   return (
@@ -53,23 +50,35 @@ export default function Ranking() {
       <div className="Ranking">
         <Tile width="400px" height="600px" header={t("Category")}>
           <div className="Ranking__Options">
-            <div className={frequentlyBought === "mostOften" ? "optionRow selected" : "optionRow"} onClick={() => setFrequentlyBought("mostOften")}>
-              <span className={frequentlyBought === "mostOften" ? "radioIcon selected" : "radioIcon"}/>
+            <div className={frequentlyBought === "mostOften" ? "optionRow selected2" : "optionRow"} onClick={() => setFrequentlyBought("mostOften")}>
+              <span className={frequentlyBought === "mostOften" ? "radioIcon selected2" : "radioIcon"}/>
               {t("Most frequently bought")}
             </div>
-            <div className={frequentlyBought === "leastOften" ? "optionRow selected" : "optionRow"} onClick={() => setFrequentlyBought("leastOften")}>
-              <span className={frequentlyBought === "leastOften" ? "radioIcon selected" : "radioIcon"}/>
+            <div className={frequentlyBought === "leastOften" ? "optionRow selected2" : "optionRow"} onClick={() => setFrequentlyBought("leastOften")}>
+              <span className={frequentlyBought === "leastOften" ? "radioIcon selected2" : "radioIcon"}/>
               {t("Least frequently bought")}
             </div>
-            <div className={useTop5Products ? "optionRow selected" : "optionRow"} onClick={() => setUseTop5Products(!useTop5Products)}>
-              <span className={useTop5Products ? "checkIcon selected" : "checkIcon"}/>
+            <div className={useTop5Products ? "optionRow selected2" : "optionRow"} onClick={() => setUseTop5Products(!useTop5Products)}>
+              <span className={useTop5Products ? "checkIcon selected2" : "checkIcon"}/>
               {t("Show only first 5 positions")}
             </div>
           </div>
         </Tile>
-        <Tile width="1400px" height="600p">
+        <Tile width="1400px" height="600px">
           <table className="Ranking__Table">
-            {JsonDataDisplay()}
+            <thead>
+              <tr className="Ranking__Table__Headline">
+                <th className="Ranking__Table__Headline__Image">{t("Picture")}</th>
+                <th className="Ranking__Table__Headline__Name">{t("Name")}</th>
+                <th className="Ranking__Table__Headline__Number">{t("Sold Items")}</th>
+                <th className="Ranking__Table__Headline__Number">
+                  {t("Turnover")+ " ["+JsonData.currency+"]"}
+                </th>
+              </tr>
+            </thead>
+              <tbody>
+                {JsonDataDisplay()}
+              </tbody>
           </table>
         </Tile>
       </div>
